@@ -57,12 +57,12 @@ tags: [机器学习, 数据挖掘, scikit-learn]
 
 
 #### __输入数据是什么？__
-图片的矩阵，一个图片有8行8列，多个这样的图片，对应对label是数字
++ 图片的矩阵，一个图片有8行8列，多个这样的图片，对应对label是数字
 python语法：
 + [:-1] Python syntax, which produces a new array that contains all but the last entry of digits.data
 
 #### __什么是混淆矩阵？__
-混淆矩阵是分析分类器识别不同类元组的一种游泳的工具。
++ 混淆矩阵是分析分类器识别不同类元组的一种游泳的工具。
 __TP__ 和 __TN__ 告诉我们分类器何时分类正确，而 __FP__ 和 __FN__ 告诉我们分类器何时分类错误。
 
 |      | yes | no | 合计 |
