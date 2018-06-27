@@ -24,7 +24,7 @@ tags: [机器学习, 数据挖掘, scikit-learn]
     C = 1.0
     kernel = 1.0 * RBF([1.0, 1.0]) # Radial basis function kernel 径向基函数核
 
-    classifier = {'L1 logistic': LogisticRegression(C=C, penalty='l1'),
+    classifier = {'L1 logistic': LogisticRegression(C=C, penalty='l1'), # l1用于指定惩罚的标准
                   'L2 logistic (OvR)': LogisticRegression(C=C, penalty='l2'),
                   'Linear SVC': SVC(kernel='linear', C=C, probability=True, random_state=0),
                   'L2 logistic (Multinomial)': LogisticRegression(C=C, solver='lbfgs', multi_class='multinomial'), 'GPC': GaussianProcessClassifier(kernel)
@@ -76,6 +76,9 @@ tags: [机器学习, 数据挖掘, scikit-learn]
 + 一种常用到核函数
 + 支持向量机分类中最为常用到核函数
 + 现成到相似性度量表示法
+
+penalization，惩罚系数，惩罚函数？
++ 约束非线性规划的制约函数
 
 #### ***np.meshgrid的作用？***
 + 一维的x = [-2, -1, 0, 1], y = [0, 1, 2]
