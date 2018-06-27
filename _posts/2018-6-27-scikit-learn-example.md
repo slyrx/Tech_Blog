@@ -108,7 +108,14 @@ penalization，惩罚系数，惩罚函数？
 + np.mean(a, axis=0) ==> [2., 3.] ，得到的均值是浮点精度的。
 + np.mean(a, axis=1) ==> [1.5,3.5]
 
-
+### 数据形式
++ 训练集
++ |feature_1|feature_2|class|
++
++ 测试集: 共10000个
++ |xfull_column_1|xfull_column_2|
++ 预测值: 共10000个
++ 把这10000个再整理成100x100的矩阵，以图片形式呈现。
 
 
 
