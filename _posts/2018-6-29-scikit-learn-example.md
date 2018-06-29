@@ -178,8 +178,15 @@ tags: [机器学习, 数据挖掘, scikit-learn]
 #### 待解决问题
 + v, w = linalg.eigh(cov)
 + u = w[0] / linalg.norm(w[0])
++ 为什么C转置后就变成协方差不固定的情况了？
++ 矩阵的加减乘除
++ np.dot(np.random.randn(n, dim), C.T) + np.array([1,4])
 
-
+#### 数据形式
++ 训练集
++ |feature_1|feature_2|class|
++ 维度为(600, 2)
++ 测试集: 与训练集用的同一个，因此也是(600, 2)
 
 
 
