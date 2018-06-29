@@ -176,8 +176,8 @@ tags: [机器学习, 数据挖掘, scikit-learn]
 + axis表示在子画布里真正的x轴和y轴
 
 #### 待解决问题
-v, w = linalg.eigh(cov)
-u = w[0] / linalg.norm(w[0])
++ v, w = linalg.eigh(cov)
++ u = w[0] / linalg.norm(w[0])
 
 
 
