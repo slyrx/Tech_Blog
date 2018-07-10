@@ -2,7 +2,7 @@
 layout: post
 title:  "scikit learn: Linear and Quadratic Discriminant Analysis with covariance ellipsoid"
 date:   2018-06-29 09:26:30
-tags: [机器学习, 数据挖掘, scikit-learn]
+tags: [机器学习, 数据挖掘, scikit-learn, classification]
 ---
 
     print(__doc__)
