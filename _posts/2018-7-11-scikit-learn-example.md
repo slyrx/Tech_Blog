@@ -70,18 +70,6 @@ tags: [机器学习, 数据挖掘, scikit-learn, ensemble methods]
 
 #### ravel的理解
 
-   \|<br>
-   \|<br>
-   \|__ __ __
-
-  \/
- \/
-\/
-
-   \|<br>
-   \|<br>
-   \|__ __ __
-
 |||k|||
 |||k|||
 |||k|k|k|
