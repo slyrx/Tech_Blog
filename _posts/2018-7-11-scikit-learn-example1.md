@@ -5,35 +5,35 @@ date:   2018-07-11 13:01:30
 tags: [机器学习, 数据挖掘, scikit-learn, ensemble methods]
 ---
 
-print(__doc__)
+    print(__doc__)
 
-import numpy as np
-import matplotlib.pyplot as plt
+    import numpy as np
+    import matplotlib.pyplot as plt
 
-from sklearn.datasets import make_classification
-from sklearn.ensemble import ExtraTreeClassifier
+    from sklearn.datasets import make_classification
+    from sklearn.ensemble import ExtraTreeClassifier
 
-X, y = make_classification(n_samples=1000, n_features=10, n_informative=3, n_redundant=0, n_repeated=0, n_classes=2, random_state=0, shuffle=False) # 生成训练数据集 n_samples样本数，n_features总的特征数，n_informative信息特征数,即每个聚为一类的内容高度相关的特征数，n_redundant多余的无效冗余的特征数，n_repeated重复的特征数，n_classes分类问题里的类型数量,random_state随机种子，shuffle弄乱样本的特征，使他们不要呈有序排列，shuffle就是弄乱的意思.
+    X, y = make_classification(n_samples=1000, n_features=10, n_informative=3, n_redundant=0, n_repeated=0, n_classes=2, random_state=0, shuffle=False) # 生成训练数据集 n_samples样本数，n_features总的特征数，n_informative信息特征数,即每个聚为一类的内容高度相关的特征数，n_redundant多余的无效冗余的特征数，n_repeated重复的特征数，n_classes分类问题里的类型数量,random_state随机种子，shuffle弄乱样本的特征，使他们不要呈有序排列，shuffle就是弄乱的意思.
 
-forest = ExtraTreesClassifier(n_estimators=250, random_state=0)
+    forest = ExtraTreesClassifier(n_estimators=250, random_state=0)
 
-forest.fit(X,y)
-importances = forest.feature_importances_ # 返回的是以特征为长度的数组，对应的值是特征的重要程度
-std = np.std([tree.feature_importances_ for tree in forest.estimators_], axis=0) # np.std()在特殊轴上计算标准偏离，返回标准偏离。标准翻译：计算沿指定轴的标准偏差，返回这个标准偏差，即分布扩展的度量。
+    forest.fit(X,y)
+    importances = forest.feature_importances_ # 返回的是以特征为长度的数组，对应的值是特征的重要程度
+    std = np.std([tree.feature_importances_ for tree in forest.estimators_], axis=0) # np.std()在特殊轴上计算标准偏离，返回标准偏离。标准翻译：计算沿指定轴的标准偏差，返回这个标准偏差，即分布扩展的度量。
 
-indices = np.argsort(importances)[::-1] # 表示对importances变量从小到大排列，再对排列得到的结果做降序排列
+    indices = np.argsort(importances)[::-1] # 表示对importances变量从小到大排列，再对排列得到的结果做降序排列
 
-print("Feature ranking:")
+    print("Feature ranking:")
 
-for f in range(X.shape[1]):
-    print("%d.feature %d(%f)" % (f + 1, indices[f], importances[indices[f]]))
+    for f in range(X.shape[1]):
+        print("%d.feature %d(%f)" % (f + 1, indices[f], importances[indices[f]]))
 
-plt.figure()
-plt.title("Feature importances")
-plt.bar(range(X.shape[1]), importances[indices], color="r", yerr=std[indices], align="center") # ***yerr*** 表示偏差std，图中蓝色工字型
-plt.xticks(range(X.shape[1]), indices)
-plt.xlim([-1, X.shape[1]])
-plt.show()
+    plt.figure()
+    plt.title("Feature importances")
+    plt.bar(range(X.shape[1]), importances[indices], color="r", yerr=std[indices], align="center") # ***yerr*** 表示偏差std，图中蓝色工字型
+    plt.xticks(range(X.shape[1]), indices)
+    plt.xlim([-1, X.shape[1]])
+    plt.show()
 
 ### 背景介绍
 这个例子示范了利用森林来评估人造分类任务的特征重要度。红色条显示了特征的重要度，和树间的变异情况。
