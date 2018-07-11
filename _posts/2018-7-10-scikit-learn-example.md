@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "scikit learn: Decision Tree Regression with AdaBoost"
-date:   2018-06-29 09:26:30
+date:   2018-07-10 09:26:30
 tags: [机器学习, 数据挖掘, scikit-learn, ensemble methods]
 ---
 
@@ -42,18 +42,11 @@ tags: [机器学习, 数据挖掘, scikit-learn, ensemble methods]
 #### 感悟
 这些算法都是针对数字比较有效的处理方式，具有客观性。所以不论你拿到什么样的数据，都会有相同的处理结果。
 
-
-
-
-
-
-
-
-
-
-
-
-
+#### 数据形式
++ 训练集 X.shape(100,1); y.shape(100)
++ (100,1)和(100)的区别是([100]),(100), 带不带中括号的区别。带中括号是一个数组，不带就是一个变量
++ 也就是sin函数的x值作为特征值，这里只有1维，y值作为标注值，也只有1维。
++ 这种函数的预测，用回归是最好的了。
 
 
 
