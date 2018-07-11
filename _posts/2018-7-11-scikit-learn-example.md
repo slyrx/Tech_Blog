@@ -73,6 +73,7 @@ tags: [机器学习, 数据挖掘, scikit-learn, ensemble methods]
    \|<br>
    \|<br>
    \|__ __ __
+
   \/
  \/
 \/
@@ -80,6 +81,16 @@ tags: [机器学习, 数据挖掘, scikit-learn, ensemble methods]
    \|<br>
    \|<br>
    \|__ __ __
+
+  k
+  k
+  k k k
+ k
+k
+
+  k
+  k
+  k k k
 
 意义：把三维压到二维表示，信息没有删减，只是全部追加到二维后面了
 
