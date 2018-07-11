@@ -72,15 +72,20 @@ tags: [机器学习, 数据挖掘, scikit-learn, ensemble methods]
 
    \|<br>
    \|<br>
-   \|__________
+   \|__ __ __
   /
  /
 /
 
    \|<br>
    \|<br>
-   \|__________
+   \|__ __ __
 
 意义：把三维压到二维表示，信息没有删减，只是全部追加到二维后面了
+
+#### pyCharm code fragment mode
++ 快速查看的code fragment mode，可以输入多行，但是无法临时添加import，import只能是在文件最开始添加。
+
+
 
 end
