@@ -72,7 +72,7 @@ ExtraTreeClassifier 额外树分类器
 + a[::1]  output: [1, 2, 3, 4]
 + a[::-2] output: [4, 2]
 + a[::2]  output: [1, 3]
-+ 全语法含义是：seq[start:end:step]
++ 全语法含义是：seq[start\:end\:step]
 + -负号表示从尾部向头部循环；step表示单次的跨距；start和end不写默认从0开始，写了就从指定下标开始
 
 
