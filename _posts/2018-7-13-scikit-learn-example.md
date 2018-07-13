@@ -5,83 +5,83 @@ date:   2018-07-13 09:36:30
 tags: [机器学习, 数据挖掘, scikit-learn, Neural Networks]
 ---
 
-print(__doc__)
+    print(__doc__)
 
-import numpy as np
-from matplotlib import pyplot as plt
-from matplotllib.colors import ListedColormap
-from sklearn.model_selection import train_test_split
-from sklearn.preprocessing import StandardScaler
-from sklearn.datasets import make_moons, make_circles, make_classification
-from sklearn.neural_network import MLPClassifier
+    import numpy as np
+    from matplotlib import pyplot as plt
+    from matplotllib.colors import ListedColormap
+    from sklearn.model_selection import train_test_split
+    from sklearn.preprocessing import StandardScaler
+    from sklearn.datasets import make_moons, make_circles, make_classification
+    from sklearn.neural_network import MLPClassifier
 
-h = .02
-alphas = np.logspace(-5, 3, 5) # logspace创建等比函数，默认是以10为底数，-5和3都表示幂，以-5为幂的起始，即10的-5次方，0.00001，以3为幂结束，即10的3次方，1000，-5和3之间按照5等分生成5个数，分别是10的5种次方，组成一个数组。另外还可以通过base=参数指定底数，比如将底数由10改成2，base=2. 对应的linspace是等差函数
-names = []
-for i in alphas:
-    names.append('alpha' + str(i))
+    h = .02
+    alphas = np.logspace(-5, 3, 5) # logspace创建等比函数，默认是以10为底数，-5和3都表示幂，以-5为幂的起始，即10的-5次方，0.00001，以3为幂结束，即10的3次方，1000，-5和3之间按照5等分生成5个数，分别是10的5种次方，组成一个数组。另外还可以通过base=参数指定底数，比如将底数由10改成2，base=2. 对应的linspace是等差函数
+    names = []
+    for i in alphas:
+        names.append('alpha' + str(i))
 
-classifier = []
-for i in alphas:
-    classifier.append(MLPClassifier(alpha=i, random_state=1))
+    classifier = []
+    for i in alphas:
+        classifier.append(MLPClassifier(alpha=i, random_state=1))
 
-X,y = make_classification(n_features=2, n_redundant=0, n_informative=2, random_state=0, n_clusters_per_class=1) # 生成数据
+    X,y = make_classification(n_features=2, n_redundant=0, n_informative=2, random_state=0, n_clusters_per_class=1) # 生成数据
 
-rng = np.random.RandomState(2)
-X += 2 * rng.uniform(size=X.shape) # rng.uniform返回指定范围内的随机数，这里将随机数分别乘到X(100，2)的矩阵元素上，结果在放大2倍，追加到X上面
-linearly_separable = (X, y) # 将X，y组合成一个tuple，标注对应属性值
+    rng = np.random.RandomState(2)
+    X += 2 * rng.uniform(size=X.shape) # rng.uniform返回指定范围内的随机数，这里将随机数分别乘到X(100，2)的矩阵元素上，结果在放大2倍，追加到X上面
+    linearly_separable = (X, y) # 将X，y组合成一个tuple，标注对应属性值
 
-datasets = [make_moons(noise=0.3, random_state=0), make_circles(noise=0.2, factor=0.5, random_state=1), linearly_separable] # 生成一个list，将moon、circles和线性数据混合起来了。
+    datasets = [make_moons(noise=0.3, random_state=0), make_circles(noise=0.2, factor=0.5, random_state=1), linearly_separable] # 生成一个list，将moon、circles和线性数据混合起来了。
 
-figure = plt.figure(figsize=(17.9))
-i = 1
+    figure = plt.figure(figsize=(17.9))
+    i = 1
 
-for X, y in datasets:
-    X = StandardScaler().fit_transform(X) # StandardScaler去均值和方差归一化。且是针对每一个特征维度来做的，而不是针对样本。fit_transform表示先拟合数据，然后将其转化为标准形式。transform表示通过找中心和缩放等实现标准化。
-    X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.4)
+    for X, y in datasets:
+        X = StandardScaler().fit_transform(X) # StandardScaler去均值和方差归一化。且是针对每一个特征维度来做的，而不是针对样本。fit_transform表示先拟合数据，然后将其转化为标准形式。transform表示通过找中心和缩放等实现标准化。
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=.4)
 
-    x_min, x_max = X[:, 0].min() - .5, X[:, 0].max() + .5
-    y_min, y_max = X[:, 1].min() - .5, X[:, 1].max() + .5
-    xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h)) # 以乘倍的方式生成新的数据， 这里np.arange里的参数h表示step的意思
+        x_min, x_max = X[:, 0].min() - .5, X[:, 0].max() + .5
+        y_min, y_max = X[:, 1].min() - .5, X[:, 1].max() + .5
+        xx, yy = np.meshgrid(np.arange(x_min, x_max, h), np.arange(y_min, y_max, h)) # 以乘倍的方式生成新的数据， 这里np.arange里的参数h表示step的意思
 
-    cm = plt.cm.RdBu
-    cm_bright = ListedColormap(['#FF0000', '#0000FF'])
-    ax = plt.subplot(len(datasets), len(classifier) + 1, i)
-    ax.scatter(X_train[:, 0], X_train[:,1], c=y_train, cmap=cm_bright)
-    ax.scatter(X_test[:,0], X_test[:, 1], c=y_test, cmap=cm_bright, alpha=0.6)
-
-    ax.set_xlim(xx.min(), xx.max())
-    ax.set_ylim(yy.min(), yy.max())
-
-    ax.set_xticks(())
-    ax.set_yticks(())
-    i += 1
-
-    for name, clf in zip(names, classifier):
-        ax = plt.subplot(len(datasets), len(classifiers) + 1, i)
-        clf.fit(X_train, y_train)
-        score = clf.score(X_test, y_test)
-
-        if hasattr(clf, "decision_function"): # 什么情况下有decision_function? decision_function是找到超平面的意思。只有svm支持向量机分类算法才用到
-            Z = clf.decision_function(np.c_[xx.ravel(), yy.ravel()])
-        else:
-            Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1] #其他分类算法一般是输出预测概率，即predict_proba。这里clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])输出的是一个<type 'tuple'>: (67456, 2)，是两列，两列上每行的元素相加之和都为1.老是忘了最初分的是哪两个类？应该是0和1两个类，这里是取的被判断为1的概率，我可以说因为是二分类问题，所以取列为0也是可以的。因为结果就是对称的。而这里参数传入yy.ravel()是把xx和yy拼接起来都作为特征输入了，结果得出了根据这两个拼接后都矩阵判断出都列都归属概率。这里都xx和yy的含义是，横坐标和竖坐标的意思，yy不表示已经预测出的结果，所以并没有把测试的结果提前告知。
-
-        Z = Z.reshape(xx.shape)
-        ax.contourf(xx, yy, Z, cmap=cm, alpha=.8) # contourf绘制等高线。
-
-        ax.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cmap=cm_bright, edgecolors='black', s=25) # scatter里的s参数，表示画出来的单个散点的大小，默认是20。当输入是一个数组时，利用数组矩阵的映射机制，则可以同时将x中的点以不同的大小同时表示出来。相同的用法可以推广到c，即color的显示。参考https://blog.csdn.net/u013634684/article/details/49646311
-        ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test, cmap=cm_bright, alpha=0.6, edgecolors='black', s=25)
+        cm = plt.cm.RdBu
+        cm_bright = ListedColormap(['#FF0000', '#0000FF'])
+        ax = plt.subplot(len(datasets), len(classifier) + 1, i)
+        ax.scatter(X_train[:, 0], X_train[:,1], c=y_train, cmap=cm_bright)
+        ax.scatter(X_test[:,0], X_test[:, 1], c=y_test, cmap=cm_bright, alpha=0.6)
 
         ax.set_xlim(xx.min(), xx.max())
         ax.set_ylim(yy.min(), yy.max())
+
         ax.set_xticks(())
         ax.set_yticks(())
-        ax.text(xx.max() - .3, yy.min() + .3, ('%.2f' % score).lstrip('0'), size=15, horizontalalignment='right') # az.text中x,y表示坐标的位置，以0到1内到百分比来确定大概的位置。一篇讲的比较详细的text相对位置的博文 https://blog.csdn.net/qq_31192383/article/details/54380736
         i += 1
 
-figure.subplots_adjust(left=.02, right=.98) # 子图调节函数，left表示子图(subplot)距画板(figure)左边的距离。right表示距右边的距离，同理bottom是底部，top是顶部。wspace表示子图水平间距，hspace表示子图垂直间距。
-plt.show()
+        for name, clf in zip(names, classifier):
+            ax = plt.subplot(len(datasets), len(classifiers) + 1, i)
+            clf.fit(X_train, y_train)
+            score = clf.score(X_test, y_test)
+
+            if hasattr(clf, "decision_function"): # 什么情况下有decision_function? decision_function是找到超平面的意思。只有svm支持向量机分类算法才用到
+                Z = clf.decision_function(np.c_[xx.ravel(), yy.ravel()])
+            else:
+                Z = clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])[:, 1] #其他分类算法一般是输出预测概率，即predict_proba。这里clf.predict_proba(np.c_[xx.ravel(), yy.ravel()])输出的是一个<type 'tuple'>: (67456, 2)，是两列，两列上每行的元素相加之和都为1.老是忘了最初分的是哪两个类？应该是0和1两个类，这里是取的被判断为1的概率，我可以说因为是二分类问题，所以取列为0也是可以的。因为结果就是对称的。而这里参数传入yy.ravel()是把xx和yy拼接起来都作为特征输入了，结果得出了根据这两个拼接后都矩阵判断出都列都归属概率。这里都xx和yy的含义是，横坐标和竖坐标的意思，yy不表示已经预测出的结果，所以并没有把测试的结果提前告知。
+
+            Z = Z.reshape(xx.shape)
+            ax.contourf(xx, yy, Z, cmap=cm, alpha=.8) # contourf绘制等高线。
+
+            ax.scatter(X_train[:, 0], X_train[:, 1], c=y_train, cmap=cm_bright, edgecolors='black', s=25) # scatter里的s参数，表示画出来的单个散点的大小，默认是20。当输入是一个数组时，利用数组矩阵的映射机制，则可以同时将x中的点以不同的大小同时表示出来。相同的用法可以推广到c，即color的显示。参考https://blog.csdn.net/u013634684/article/details/49646311
+            ax.scatter(X_test[:, 0], X_test[:, 1], c=y_test, cmap=cm_bright, alpha=0.6, edgecolors='black', s=25)
+
+            ax.set_xlim(xx.min(), xx.max())
+            ax.set_ylim(yy.min(), yy.max())
+            ax.set_xticks(())
+            ax.set_yticks(())
+            ax.text(xx.max() - .3, yy.min() + .3, ('%.2f' % score).lstrip('0'), size=15, horizontalalignment='right') # az.text中x,y表示坐标的位置，以0到1内到百分比来确定大概的位置。一篇讲的比较详细的text相对位置的博文 https://blog.csdn.net/qq_31192383/article/details/54380736
+            i += 1
+
+    figure.subplots_adjust(left=.02, right=.98) # 子图调节函数，left表示子图(subplot)距画板(figure)左边的距离。right表示距右边的距离，同理bottom是底部，top是顶部。wspace表示子图水平间距，hspace表示子图垂直间距。
+    plt.show()
 
 
 
