@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "scikit learn: Visualization of MLP weights on MNIST"
-date:   2018-07-11 13:01:30
+date:   2018-07-12 07:01:30
 tags: [机器学习, 数据挖掘, scikit-learn, Neural Networks]
 ---
 
