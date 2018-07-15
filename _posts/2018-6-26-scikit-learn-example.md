@@ -12,7 +12,7 @@ tags: [机器学习, 数据挖掘, scikit-learn]
     from sklearn import datasets, svm, metrics # 数据集，支持向量机，矩阵等库
 
     digits = datasets.load_digits() # 加载数据集
-    images_and_labels = list(zip(digits.images, digits.target)) # zip将对象中对应等元素打包成一个个元组，然后返回由这些元组组成等列表。"tuple"称为元组，和list类似，其中内容不得修改，在里面可以放入字典。
+    images_and_labels = list(zip(digits.images, digits.target)) # zip将对象中对应等元素打包成一个个元组，然后返回由这些元组组成的列表。"tuple"称为元组，和list类似，其中内容不得修改，在里面可以放入字典。
 
     for index, (image, label) in enumerate(images_and_labels[:4]):# 这里为了简略，只取了4个图片的数据量
     \# index不是关键词，表示直接提取了images_and_labels里的下标序号，主要是因为enumerate里返回的下标，所以它能表示。
