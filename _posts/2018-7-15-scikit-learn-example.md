@@ -5,61 +5,61 @@ date:   2018-07-15 07:14:30
 tags: [机器学习, 数据挖掘, scikit-learn, Neural Networks]
 ---
 
-print(__doc__)
-import matplotlib.pyplot as plt
-from sklearn.neural_network import MLPClassifier
-from sklearn.preprocessing import MinMaxScaler
-from sklearn import datasets
+    print(__doc__)
+    import matplotlib.pyplot as plt
+    from sklearn.neural_network import MLPClassifier
+    from sklearn.preprocessing import MinMaxScaler
+    from sklearn import datasets
 
-params = [{'solver':'sgd', 'learning_rate':'constant', 'momentum':0,  'learning_rate_init':0.2},
-          {'solver':'sgd', 'learning_rate':'constant', 'momentum':.9, 'nesterovs_momentum':False, 'learning_rate_init':0.2},
-          {'solver':'sgd', 'learning_rate':'constant', 'momentum':.9, 'nesterovs_momentum':True,'learning_rate_init':0.2},
-          {'solver':'sgd', 'learning_rate':'invscaling','momentum':0, 'learning_rate_init':0.2},
-          {'solver':'sgd', 'learning_rate':'invscaling','momentum':0, 'learning_rate_init':0.2},
-          {'solver':'sgd', 'learning_rate':'invscaling','momentum':.9,'nesterovs_momentum':False,'learning_rate_init':0.2},
-          {'solver':'adam','learning_rate_init':0.01}]
+    params = [{'solver':'sgd', 'learning_rate':'constant', 'momentum':0,  'learning_rate_init':0.2},
+              {'solver':'sgd', 'learning_rate':'constant', 'momentum':.9, 'nesterovs_momentum':False, 'learning_rate_init':0.2},
+              {'solver':'sgd', 'learning_rate':'constant', 'momentum':.9, 'nesterovs_momentum':True,'learning_rate_init':0.2},
+              {'solver':'sgd', 'learning_rate':'invscaling','momentum':0, 'learning_rate_init':0.2},
+              {'solver':'sgd', 'learning_rate':'invscaling','momentum':0, 'learning_rate_init':0.2},
+              {'solver':'sgd', 'learning_rate':'invscaling','momentum':.9,'nesterovs_momentum':False,'learning_rate_init':0.2},
+              {'solver':'adam','learning_rate_init':0.01}]
 
-labels = ["constant learning-rate", "constant with momentum", "constant with Nesterov's momentum", "inv-scaling learning-rate", "inv-scaling with momentum", "inv-scaling with Nesterov's momentum", "adam"]
+    labels = ["constant learning-rate", "constant with momentum", "constant with Nesterov's momentum", "inv-scaling learning-rate", "inv-scaling with momentum", "inv-scaling with Nesterov's momentum", "adam"]
 
-plot_args = [{'c': 'red', 'linestyle':'-'},
-            {'c': 'green', 'linestyle':'-'},
-            {'c': 'blue', 'linestyle':'-'},
-            {'c': 'red', 'linestyle':'--'},
-            {'c': 'green', 'linestyle':'--'},
-            {'c': 'blue', 'linestyle':'--'},
-            {'c': 'black', 'linestyle':'-'},]
+    plot_args = [{'c': 'red', 'linestyle':'-'},
+                {'c': 'green', 'linestyle':'-'},
+                {'c': 'blue', 'linestyle':'-'},
+                {'c': 'red', 'linestyle':'--'},
+                {'c': 'green', 'linestyle':'--'},
+                {'c': 'blue', 'linestyle':'--'},
+                {'c': 'black', 'linestyle':'-'},]
 
-def plot_on_dataset(X, y, ax, name):
-    print("\nlearning on dataset %s"% name)
-    ax.set_title(name)
-    X = MinMaxScaler().fit_transform(X) # 通过缩放特征来把每个特征变换到一个给定区间。默认是把序列里最大和最小值到范围设定为给定区间。
-    mlps = []
-    if name == "digits":
-       max_iter = 15
-    else:
-       max_iter = 400
+    def plot_on_dataset(X, y, ax, name):
+        print("\nlearning on dataset %s"% name)
+        ax.set_title(name)
+        X = MinMaxScaler().fit_transform(X) # 通过缩放特征来把每个特征变换到一个给定区间。默认是把序列里最大和最小值到范围设定为给定区间。
+        mlps = []
+        if name == "digits":
+           max_iter = 15
+        else:
+           max_iter = 400
 
-    for label, param in zip(lables, params): # zip将对象中对应等元素打包成一个个元组，然后返回由这些元组组成的列表。
-        print("training: %s" % label)
-        mlp = MLPClassifier(verbose=0, random_state=0, max_iter=max_iter, \*\*param) #
-        mlp.fit(X, y) #
-        mlps.append(mlp) # 这里是追加到一个模型列表中
-        print("Training set score : %f" % mlp.score(X, y))
-        print("Training set loss: %f" % mlp.loss_)
-    for mlp, label, args in zip(mlps, labels, plot_args):
-        ax.plot(mlp.loss_curve_, label=label, \*\*args)
+        for label, param in zip(lables, params): # zip将对象中对应等元素打包成一个个元组，然后返回由这些元组组成的列表。
+            print("training: %s" % label)
+            mlp = MLPClassifier(verbose=0, random_state=0, max_iter=max_iter, \*\*param) #
+            mlp.fit(X, y) #
+            mlps.append(mlp) # 这里是追加到一个模型列表中
+            print("Training set score : %f" % mlp.score(X, y))
+            print("Training set loss: %f" % mlp.loss_)
+        for mlp, label, args in zip(mlps, labels, plot_args):
+            ax.plot(mlp.loss_curve_, label=label, \*\*args)
 
-fig, axes = plt.subplots(2, 2, figsize=(15, 10)) # axes直接理解成画布，但是它可大可小
+    fig, axes = plt.subplots(2, 2, figsize=(15, 10)) # axes直接理解成画布，但是它可大可小
 
-iris = datasets.load_iris()
-digits = datasets.load_digits()
-data_sets = [(iris.data, iris.target), (digits.data, digits.target), datasets.make_circles(noise=0.2, factor=0.5, random_state=1), datasets.make_moons(noise=0.3, random_state=0)]
+    iris = datasets.load_iris()
+    digits = datasets.load_digits()
+    data_sets = [(iris.data, iris.target), (digits.data, digits.target), datasets.make_circles(noise=0.2, factor=0.5, random_state=1), datasets.make_moons(noise=0.3, random_state=0)]
 
-for ax, data, name in zip(axes.ravel(), data_sets, ['iris', 'digits', 'circles', 'moons']):
-    plot_on_dataset(\*data, ax=ax, name=name) # \*data直接包括了X,y
+    for ax, data, name in zip(axes.ravel(), data_sets, ['iris', 'digits', 'circles', 'moons']):
+        plot_on_dataset(\*data, ax=ax, name=name) # \*data直接包括了X,y
 
-fig.legend(ax.get_lines(), labels, ncol=3, loc="upper center") # 图例函数，占地面积，大小
-plt.show()
+    fig.legend(ax.get_lines(), labels, ncol=3, loc="upper center") # 图例函数，占地面积，大小
+    plt.show()
 
 
 
