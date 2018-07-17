@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "scikit learn: Restricted Boltzmann Machine features for classification"
-date:   2018-07-16 10:31:30
+date:   2018-07-17 10:31:30
 tags: [机器学习, 数据挖掘, scikit-learn, Support Vector Machines]
 ---
 
