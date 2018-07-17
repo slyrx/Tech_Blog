@@ -1,8 +1,8 @@
 ---
 layout: post
-title:  "scikit learn: Restricted Boltzmann Machine features for classification"
-date:   2018-07-16 10:31:30
-tags: [机器学习, 数据挖掘, scikit-learn, Neural Networks]
+title:  "scikit learn: Non-linear SVM"
+date:   2018-07-17 06:51:30
+tags: [机器学习, 数据挖掘, scikit-learn, Support Vector Machines]
 ---
 
     print(__doc__)
