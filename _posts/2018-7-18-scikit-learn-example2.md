@@ -41,7 +41,7 @@ tags: [机器学习, 数据挖掘, scikit-learn, Support Vector Machines]
         plt.clf()
 
         plt.scatter(clf.support_vectors_[:, 0], clf.support_vectors_[:, 1], s=80, facecolors='none', zorder=10, edgecolors='k')
-        plt.scatter(X[:, 0], X[:, 1], c=Y, zorder=10, cmap=plt.cm.Paired, edgecolors='k')
+        plt.scatter(X[:, 0], X[:, 1], c=Y, zorder=10, cmap=plt.cm.Paired, edgecolors='k')  # 基础数据集是用的一样的数据集
 
         plt.axis('tight')
         x_min = -3
