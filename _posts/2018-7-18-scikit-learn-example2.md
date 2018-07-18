@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "scikit learn: SVM - Kernels"
-date:   2018-07-18 10:31:30
+date:   2018-07-18 21:17:30
 tags: [机器学习, 数据挖掘, scikit-learn, Support Vector Machines]
 ---
 
