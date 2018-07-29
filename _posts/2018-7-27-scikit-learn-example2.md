@@ -32,6 +32,7 @@ tags: [机器学习, 数据挖掘, scikit-learn, Generalized Linear Models]
     plt.axis('tight')
     plt.show()
 
-
+### 背景介绍
+这一系列的例子都是介绍广义模型的参数和评价标准的。
 
 end
