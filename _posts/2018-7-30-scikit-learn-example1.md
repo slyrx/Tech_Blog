@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "scikit learn: Label Propagation digits: Demonstrating performance"
-date:   2018-07-29 15:28:30
+date:   2018-07-30 15:28:30
 tags: [机器学习, 数据挖掘, scikit-learn, Semi Supervised Classification]
 ---
 
