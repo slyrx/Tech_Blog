@@ -24,12 +24,14 @@ touch app/{\__init\__,app,config,main,views}.py # 该命令行之间不能有空
 这个文件树的建立，只是把原来写在一个py中的内容，划分成多个模块了。
 A circular import occurs when two modules mutually import each other and, hence, cannot be imported at all.
 That is why we have broken our app into several modules and created a single entry-point that controls the ordering of imports.
-(http://pcr54drkl.bkt.clouddn.com/Snip20180801_1.png)
-(http://pcr54drkl.bkt.clouddn.com/Snip20180801_2.png)
-(http://pcr54drkl.bkt.clouddn.com/Snip20180801_3.png)
-(http://pcr54drkl.bkt.clouddn.com/Snip20180801_4.png)
 
-文件树的import流程(http://pcr54drkl.bkt.clouddn.com/Snip20180801_5.png)
+![config.py](http://pcr54drkl.bkt.clouddn.com/Snip20180801_1.png)
+![app.py](http://pcr54drkl.bkt.clouddn.com/Snip20180801_2.png)
+![views.py](http://pcr54drkl.bkt.clouddn.com/Snip20180801_3.png)
+![main.py](http://pcr54drkl.bkt.clouddn.com/Snip20180801_4.png)
+
+文件树的import流程
+![文件树的import流程](http://pcr54drkl.bkt.clouddn.com/Snip20180801_5.png)
 
 
 
