@@ -53,4 +53,11 @@ touch 主要功能是：改变timestamps;新建空白文件
 2018年8月1日 星期三
 Adding Flask-Migrate to our project
 
+2018年8月4日 星期六
+Jinja2 is a fast, flexible, and secure templating engine.
+关于库引入的概念更深一步了，关键在sys.path
+
+2018年8月5日 星期日
+Deleting entries
+
 end
