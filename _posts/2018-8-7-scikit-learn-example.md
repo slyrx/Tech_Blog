@@ -49,7 +49,7 @@ tags: [机器学习, 数据挖掘, scikit-learn, ensemble methods]
     plt.plot(xx, f(xx), 'g:', label=u'$f(x) = x\\, \\sin(x)$') # f(xx)是严格的正确数据
     plt.plot(X, y, 'b.', markersize=10, label=u'Observations') # f(xx)增加了部分干扰数据
     plt.plot(xx, y_pred, 'r-', label=u'Prediction') #带干扰数据得到的预测结果
-    plt.plot(xx, y_upper, 'k-') #带干扰数据得到的预测结果，上限
+    plt.plot(xx, y_upper, 'k-') #带干扰数据得到预测结果，上限
     plt.plot(xx, y_lower, 'k-') #带干扰数据得到的预测结果，下限
     plt.fill(np.concatenate([xx, xx[::-1]]), np.concatenate([y_upper, y_lower[::-1]]), alpha=.5, fc='b', ec='None', label='90% prediction interval')
     plt.xlabel('$x$')
