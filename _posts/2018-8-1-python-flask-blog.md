@@ -63,5 +63,6 @@ Deleting entries
 2018年8月13日 星期一
 Serving static files
 
-
+2018年8月15日 星期三
+Customizing Admin model forms
 end
