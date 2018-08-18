@@ -30,10 +30,10 @@ tags: [机器学习, 数据挖掘, scikit-learn, ensemble methods]
     pipeline = make_pipeline(rt, rt_lm)
     pipeline.fit(X_train, y_train)
     y_pred_rt = pipeline.predict_proba(X_test)[:, 1]
-    fpr_rt_lm, tpr_rt_lm, _ = roc_curve(y_test, y_pred_rt)
+    fpr_rt_lm, tpr_rt_lm, _ = roc_curve(y_test, y_pred_rt) # 返回的结果是假机率和真的机率
 
     rf = RandomForestClassifier(max_depth=3, n_estimators=n_estimator)
-    rf_enc = OneHotEncoder()
+    rf_enc = OneHotEncoder() # 特征分类编码
     rf_lm = LogisticRegression()
     rf.fit(X_train, y_train)
     rf_enc.fit(rf.apply(X_train))
@@ -86,6 +86,14 @@ tags: [机器学习, 数据挖掘, scikit-learn, ensemble methods]
     plt.title('ROC curve (zoomed in at top left)')
     plt.legend(loc='best')
     plt.show()
+
+### 背景介绍
+First fit an ensemble of trees (totally random trees, a random forest, or gradient boosted trees) on the training set.
+Then each leaf of each tree in the ensemble is assigned a fixed arbitrary feature index in a new feature space.
+These leaf indices are then encoded in a one-hot fashion.
+
+Each sample goes through the decisions of each tree of the ensemble and ends up in one leaf per tree.
+The sample is encoded by setting feature values for these leaves to 1 and the other feature values to 0.
 
 
 end
