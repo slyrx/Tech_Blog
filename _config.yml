@@ -32,7 +32,13 @@ nav_lists:
       zh-Hans: 动态
       zh-Hant: 动态
     url: /about.html
-
+nav_add:
+   titles:
+    en: News
+    zh: 动态
+    zh-Hans: 动态
+    zh-Hant: 动态
+   url: /about.html
 # paths:
 #   base: /
 #   home: /
