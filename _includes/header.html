@@ -10,12 +10,20 @@
     </div>
     <nav>
       <ul>
+        {%- for list in site.nav_add -%}
+          {%- assign __path = list.url -%}
+          {%- include snippets/get-nav-url.html -%}
+          {%- assign href = __return -%}
+          {%- assign __locale = list.titles -%}
+          {%- include snippets/locale-to-string.html -%}
+          <li><a href="{{ href }}">{%- if list.title -%}{{ list.title }}{%- else -%}{{ __return }}{%- endif -%}</a></li>
+        {%- endfor -%}        
         {%- assign __path = nav_add.url -%}
         {%- include snippets/get-nav-url.html -%}
         {%- assign href = __return -%}
         {%- assign __locale = nav_add.titles -%}
         {%- include snippets/locale-to-string.html -%}
-        <li><a href="{{ href }}">{{ __return }}</a></li>
+        <li><a href="{{ href }}">test</a></li>
         {%- assign __path = site.paths.blog | default: site.data.variables.default.paths.blog -%}
         {%- include snippets/get-nav-url.html -%}
         {%- assign href = __return -%}
