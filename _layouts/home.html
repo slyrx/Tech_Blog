@@ -11,13 +11,6 @@ titles:
     <div class="m-post-list">
       {%- for post in paginator.posts -%}
         <article>
-          <div class="m-article-content">
-            {%- if site.excerpt_type == 'html' -%}
-              {{ post.excerpt }}
-            {%- else -%}
-              {{ post.excerpt | strip_html | truncate: 350 }}
-            {%- endif -%}
-          </div>
           {%- assign __path = post.url -%}
           {%- include snippets/prepend-baseurl.html -%}
           {%- assign __locale = site.data.locale.READMORE -%}
