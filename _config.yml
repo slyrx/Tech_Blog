@@ -30,8 +30,14 @@ nav_lists:
       en: News
       zh: 动态
       zh-Hans: 动态
-      zh-Hant: 動】
+      zh-Hant: 动态
     url: /about.html
+  - titles:
+      en: Blog
+      zh: 博客
+      zh-Hans: 博客
+      zh-Hant: 博客
+    url: /blog.html
 
 # paths:
 #   base: /
