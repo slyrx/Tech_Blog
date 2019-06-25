@@ -34,12 +34,12 @@ nav_lists:
     url: /about.html
 nav_add:
   - titles:
-      en: News
+      en: Home
       zh: 动态
       zh-Hans: 动态
       zh-Hant: 动态
     url: /about.html
-    title: NewsNews
+    title: Home
 # paths:
 #   base: /
 #   home: /
