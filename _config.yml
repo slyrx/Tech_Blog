@@ -21,10 +21,10 @@ description: > #this means to ignore newlines until "nav_lists:"
 
 nav_lists:
   - titles:
-      en: About
-      zh: 关于
-      zh-Hans: 关于
-      zh-Hant: 關於
+      en: Projects
+      zh: 项目
+      zh-Hans: 项目
+      zh-Hant: 項目
     url: /about.html
   - titles:
       en: News
