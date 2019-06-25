@@ -33,6 +33,7 @@ nav_lists:
       zh-Hant: 动态
     url: /about.html
 nav_add:
+   title: NewsNews
    titles:
     en: News
     zh: 动态
