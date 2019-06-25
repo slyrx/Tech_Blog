@@ -1,4 +1,9 @@
 NAV:
+  HOME:
+    en:      "Blog"
+    zh:      "主页"
+    zh-Hans: "主页"
+    zh-Hant: "主頁"  
   BLOG:
     en:      "Blog"
     zh:      "主页"
