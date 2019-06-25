@@ -16,7 +16,7 @@
         {%- assign __locale = site.data.locale.NAV.HOME -%}
         {%- include snippets/locale-to-string.html -%}
         <li><a href="{{ href }}">{{ __return }}</a></li>
-        {%- assign __path = site.paths.home | default: site.data.variables.default.paths.home -%}
+        {%- assign __path = site.paths.blog | default: site.data.variables.default.paths.blog -%}
         {%- include snippets/get-nav-url.html -%}
         {%- assign href = __return -%}
         {%- assign __locale = site.data.locale.NAV.BLOG -%}

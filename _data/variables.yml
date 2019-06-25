@@ -3,6 +3,7 @@ default:
   paths:
     base: /
     home: /
+    blog: /blog.html
     all:  /all.html
     rss:  /feed.xml
   lang: zh
