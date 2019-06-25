@@ -9,16 +9,7 @@ titles:
 <div class="m-home">
   <div class="main">
     <div class="m-post-list">
-      {%- for post in paginator.posts -%}
-        <article>
-          {%- assign __path = post.url -%}
-          {%- include snippets/prepend-baseurl.html -%}
-          {%- assign __locale = site.data.locale.READMORE -%}
-          {%- include snippets/locale-to-string.html -%}
-          <a href="{{ href }}">{{ __return }}</a>
-          {%- include article-info.html -%}
-        </article>
-      {%- endfor -%}
+
     </div>
   </div>
 </div>
