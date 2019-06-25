@@ -26,6 +26,12 @@ nav_lists:
       zh-Hans: 关于
       zh-Hant: 關於
     url: /about.html
+  - titles:
+      en: News
+      zh: 动态
+      zh-Hans: 动态
+      zh-Hant: 動】
+    url: /about.html
 
 # paths:
 #   base: /
