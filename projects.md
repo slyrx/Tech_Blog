@@ -8,7 +8,7 @@ titles:
 key: page-about
 ---
 
-## project
+## testproject
 
 ## Project 1
 
