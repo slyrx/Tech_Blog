@@ -6,6 +6,7 @@ titles:
   zh-Hans: 项目
   zh-Hant: 项目
 key: page-project
+display_title: Project
 ---
 
 ## testproject
