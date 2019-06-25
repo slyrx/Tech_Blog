@@ -15,7 +15,7 @@
         {%- assign href = __return -%}
         {%- assign __locale = nav_add.titles -%}
         {%- include snippets/locale-to-string.html -%}
-        <li><a href="{{ href }}">test</a></li>
+        <li><a href="{{ href }}">{{ __return }}</a></li>
         {%- assign __path = site.paths.blog | default: site.data.variables.default.paths.blog -%}
         {%- include snippets/get-nav-url.html -%}
         {%- assign href = __return -%}
