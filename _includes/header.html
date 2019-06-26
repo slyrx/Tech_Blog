@@ -10,26 +10,18 @@
     </div>
     <nav>
       <ul>
-        {%- for list in site.nav_add -%}
-          {%- assign __path = list.url -%}
-          {%- include snippets/get-nav-url.html -%}
-          {%- assign href = __return -%}
-          {%- assign __locale = list.titles -%}
-          {%- include snippets/locale-to-string.html -%}
-          <li><a href="{{ href }}">{%- if list.title -%}{{ list.title }}{%- else -%}{{ __return }}{%- endif -%}</a></li>
-        {%- endfor -%}        
-        {%- assign __path = site.paths.blog | default: site.data.variables.default.paths.blog -%}
+        {%- assign __path = site.paths.home | default: site.data.variables.default.paths.home -%}
         {%- include snippets/get-nav-url.html -%}
         {%- assign href = __return -%}
-        {%- assign __locale = site.data.locale.NAV.BLOG -%}
+        {%- assign __locale = site.data.locale.NAV.HOME -%}
         {%- include snippets/locale-to-string.html -%}
-        <li><a href="{{ href }}">{{ __return }}</a></li>
-        {%- assign __path = site.paths.all | default: site.data.variables.default.paths.all -%}
+        <li><a href="{{ href }}">{{ __return }}</a></li>     
+        {%- assign __path = site.paths.cccc | default: site.data.variables.default.paths.cccc -%}
         {%- include snippets/get-nav-url.html -%}
         {%- assign href = __return -%}
-        {%- assign __locale = site.data.locale.NAV.ALL -%}
+        {%- assign __locale = site.data.locale.NAV.NEWS -%}
         {%- include snippets/locale-to-string.html -%}
-        <li><a href="{{ href }}">{{ __return }}</a></li>
+        <li><a href="{{ href }}">{{ __return }}</a></li>  
         {%- for list in site.nav_lists -%}
           {%- assign __path = list.url -%}
           {%- include snippets/get-nav-url.html -%}
@@ -38,6 +30,12 @@
           {%- include snippets/locale-to-string.html -%}
           <li><a href="{{ href }}">{%- if list.title -%}{{ list.title }}{%- else -%}{{ __return }}{%- endif -%}</a></li>
         {%- endfor -%}
+        {%- assign __path = site.paths.all | default: site.data.variables.default.paths.all -%}
+        {%- include snippets/get-nav-url.html -%}
+        {%- assign href = __return -%}
+        {%- assign __locale = site.data.locale.NAV.ALL -%}
+        {%- include snippets/locale-to-string.html -%}
+        <li><a href="{{ href }}">{{ __return }}</a></li>
       </ul>
     </nav>
   </div>

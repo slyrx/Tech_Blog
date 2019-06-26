@@ -25,21 +25,22 @@ nav_lists:
       zh: 项目
       zh-Hans: 项目
       zh-Hant: 項目
+    title: Projects
     url: /projects.html
   - titles:
-      en: News
-      zh: 动态
-      zh-Hans: 动态
-      zh-Hant: 动态
+      en: AI
+      zh: 人工智能
+      zh-Hans: 人工智能
+      zh-Hant: 人工智能
+    title: AI
     url: /about.html
-nav_add:
   - titles:
-      en: Home
-      zh: 动态
-      zh-Hans: 动态
-      zh-Hant: 动态
-    url: /pppp.html
-    title: Home
+      en: Awards
+      zh: 获奖经历
+      zh-Hans: 获奖经历
+      zh-Hant: 获奖经历
+    url: /about.html
+
 # paths:
 #   base: /
 #   home: /

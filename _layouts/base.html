@@ -22,6 +22,10 @@
       {%- include scripts/common.js -%}
     </script>
     {%- include scripts/variables.html -%}
+    {% assign my_variable = false %}
+    {% if my_variable != true %}
+      This statement is valid.
+    {% endif %}
     {%- if page.layout == "home" -%}
       <script>
         {%- include scripts/home.js -%}

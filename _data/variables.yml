@@ -3,7 +3,7 @@ default:
   paths:
     base: /
     home: /
-    cccc: /
+    cccc: /pppp.html
     all:  /all.html
     rss:  /feed.xml
   lang: zh

@@ -14,6 +14,13 @@ Welcome to my blog! :earth_asia: :earth_africa: :earth_americas:
 (() => console.log('hello, world!'))();
 {% endhighlight %}
 
+{% assign my_variable = false %}
+{% if my_variable != true %}
+  This statement is valid 1.
+{% endif %}
+
+{{ paginator }}
+
 ## Skills
 
 - HTML5, CSS3(SASS), JavaScript(ES2017, Node.js), Bash(Zsh)

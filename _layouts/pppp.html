@@ -6,30 +6,21 @@ titles:
   zh-Hans: 博客
   zh-Hant: 博客
 ---
+
 <div class="m-home">
-  <div class="main">
+    <div class="main">
       <div class="m-post-list">
-          {%- for post in paginator.projects -%}
-            <article>
-              {%- assign __path = post.url -%}
-              {%- include snippets/prepend-baseurl.html -%}
-              {%- assign href = __return -%}
-              <h1><a href="{{ href }}">{{ post.title }}</a></h1>
-              <div class="m-article-content">
-                {%- if site.excerpt_type == 'html' -%}
-                  {{ post.excerpt }}
-                {%- else -%}
-                  {{ post.excerpt | strip_html | truncate: 350 }}
-                {%- endif -%}
-              </div>
-              {%- assign __path = post.url -%}
-              {%- include snippets/prepend-baseurl.html -%}
-              {%- assign __locale = site.data.locale.READMORE -%}
-              {%- include snippets/locale-to-string.html -%}
-              <a href="{{ href }}">{{ __return }}</a>
-              {%- include article-info.html -%}
-            </article>
-          {%- endfor -%}
-        </div>
+        {{ paginator }} paginator<br>
+        {{ site }} site<br>
+        {{ page }} page<br>
+        {{ layout }}  layout<br>
+        {{ content }}  content<br>
+        {% assign my_variable = false %}
+        {% if my_variable != true %}
+          This statement is valid.
+        {% endif %}
+        
+      </div>
+
+    </div>
   </div>
-</div>

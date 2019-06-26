@@ -1,11 +1,11 @@
 NAV:
   HOME:
-    en:      "Home"
+    en:      "Blog"
     zh:      "主页"
     zh-Hans: "主页"
     zh-Hant: "主頁"  
-  BLOG:
-    en:      "Blog"
+  NEWS:
+    en:      "News"
     zh:      "主页"
     zh-Hans: "主页"
     zh-Hant: "主頁"
