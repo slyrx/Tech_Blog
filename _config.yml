@@ -33,13 +33,13 @@ nav_lists:
       zh-Hans: 人工智能
       zh-Hant: 人工智能
     title: AI
-    url: /about.html
+    url: /ai.html
   - titles:
       en: Awards
       zh: 获奖经历
       zh-Hans: 获奖经历
       zh-Hant: 获奖经历
-    url: /about.html
+    url: /awards.html
 
 # paths:
 #   base: /

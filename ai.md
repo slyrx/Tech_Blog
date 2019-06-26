@@ -1,12 +1,12 @@
 ---
 layout: page
 titles:
-  en: Project
+  en: AI
   zh: 项目
   zh-Hans: 项目
   zh-Hant: 项目
-key: page-project
-display_title: Project
+key: page-ai
+display_title: AI
 ---
 
 Welcome to my blog! :earth_asia: :earth_africa: :earth_americas:

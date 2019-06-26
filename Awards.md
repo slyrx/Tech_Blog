@@ -1,12 +1,12 @@
 ---
 layout: page
 titles:
-  en: Project
+  en: Awards
   zh: 项目
   zh-Hans: 项目
   zh-Hant: 项目
-key: page-project
-display_title: Project
+key: page-awards
+display_title: Awards
 ---
 
 Welcome to my blog! :earth_asia: :earth_africa: :earth_americas:
