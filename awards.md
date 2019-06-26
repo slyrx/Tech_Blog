@@ -6,16 +6,14 @@ titles:
   zh-Hans: 项目
   zh-Hant: 项目
 key: page-awards
-display_title: Awards
+title: Selected Awards
 ---
 
-Welcome to my blog! :earth_asia: :earth_africa: :earth_americas:
 
 
-## Project 1
+<center><img src="./assets/images/certificate.png" width="70%"/></center>
+<center>
+AI From the Data Center to the Edge -An Optimized Path Using Intel® Architecture certificate
+</center>
 
-- HTML5, CSS3(SASS), JavaScript(ES2017, Node.js), Bash(Zsh)
-- React, React Native, Vue.js
-- gulp, webpack
-- Adobe Photoshop, Sketch
-
++ Mar. - May. 2018 - 通过运动健身及控制饮食的方式减重23斤，至今维持体重在标准BMI值22。

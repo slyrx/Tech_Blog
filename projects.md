@@ -6,16 +6,30 @@ titles:
   zh-Hans: 项目
   zh-Hant: 项目
 key: page-project
-display_title: Project
+title: Projects Info
 ---
 
-Welcome to my blog! :earth_asia: :earth_africa: :earth_americas:
+<table width="100%" style="border: 0px; ">
+    <tr>
+        <td>
+            <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
+        </td>
+        <td width="70%">
+            <a href="" id="ecr-rl"><b>scrapy 爬虫</b></a><br />
+            2
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
+        </td>
+        <td width="70%">
+            <a href="" id="memd"><b>flask 博客</b></a> <br />
+            4
+        </td>
+    </tr>
+</table>
 
 
-## Project 1
 
-- HTML5, CSS3(SASS), JavaScript(ES2017, Node.js), Bash(Zsh)
-- React, React Native, Vue.js
-- gulp, webpack
-- Adobe Photoshop, Sketch
 
