@@ -15,7 +15,7 @@ title: AI Projects Info
             <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
         </td>
         <td width="70%">
-            <a href="" id="ecr-rl"><b>11</b></a><br />
+            <a href="" id="ecr-rl"><b>预测广告的日曝光率</b></a><br />
             2
         </td>
     </tr>
@@ -24,7 +24,7 @@ title: AI Projects Info
             <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
         </td>
         <td width="70%">
-            <a href="" id="memd"><b>2</b></a> <br />
+            <a href="" id="memd"><b>A 股上市公司季度营收预测</b></a> <br />
             4
         </td>
     </tr>
@@ -33,7 +33,16 @@ title: AI Projects Info
             <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
         </td>
         <td width="70%">
-            <a href="" id="aptamer"><b>5</b></a> <br />
+            <a href="" id="aptamer"><b>房屋信贷违约风险预测</b></a> <br />
+            6
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
+        </td>
+        <td width="70%">
+            <a href="" id="aptamer"><b>聊天机器人</b></a> <br />
             6
         </td>
     </tr>

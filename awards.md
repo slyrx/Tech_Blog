@@ -15,5 +15,3 @@ title: Selected Awards
 <center>
 AI From the Data Center to the Edge -An Optimized Path Using Intel® Architecture certificate
 </center>
-
-+ Mar. - May. 2018 - 通过运动健身及控制饮食的方式减重23斤，至今维持体重在标准BMI值22。
