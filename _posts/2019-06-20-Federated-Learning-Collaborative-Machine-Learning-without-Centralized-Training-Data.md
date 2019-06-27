@@ -2,7 +2,7 @@
 layout: post
 title:  "联合学习: 无需集中训练的协作机器学习"
 date:   2019-06-20 10:11:30
-tags: [联合学习, tensorflow]
+tags: [联合学习, tensorflow, 翻译, TFUG]
 ---
 
 [联合学习: 无需集中训练的协作机器学习](http://ai.googleblog.com/2017/04/federated-learning-collaborative.html "联合学习: 没有集中训练的协作机器学习")
