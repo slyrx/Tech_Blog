@@ -9,23 +9,27 @@ key: page-project
 title: Projects Info
 ---
 
-<table width="100%" style="border: 0px; ">
+&nbsp;
+<table width="100%" rules="none">
     <tr>
         <td>
             <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
         </td>
         <td width="70%">
-            <a href="" id="ecr-rl"><b>scrapy 爬虫</b></a><br />
-            2
+            <a href="" id="aptamer"><b>聊天机器人</b></a> <br />
+            6
         </td>
     </tr>
+</table>
+&nbsp;
+<table width="100%" rules="none">
     <tr>
         <td>
             <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
         </td>
         <td width="70%">
-            <a href="" id="memd"><b>flask 博客</b></a> <br />
-            4
+            <a href="" id="aptamer"><b>聊天机器人</b></a> <br />
+            6
         </td>
     </tr>
 </table>
