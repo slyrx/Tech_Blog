@@ -19,7 +19,6 @@ Welcome to my blog! :earth_asia: :earth_africa: :earth_americas:
   This statement is valid 1.
 {% endif %}
 
-{{ paginator }}
 
 ## Skills
 
