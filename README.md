@@ -19,4 +19,6 @@ when uploading some change, you should wait for a little while, in order to let 
 
 ## jeklly run
 1. bundle update
-2. bundle exec jekyll serve -H 0.0.0.0 -P 4000 -I
+2. bundle clean  
+3. bundle exe jekyll build
+4. bundle exec jekyll serve -H 0.0.0.0 -P 4000 -I
