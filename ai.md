@@ -13,59 +13,11 @@ title: AI Projects Info
 <table width="100%" rules="none">
     <tr>
         <td>
-            <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
+            <center><img src="https://www.irishtimes.com/polopoly_fs/1.3814829.1551776993!/image/image.jpg_gen/derivatives/box_620_330/image.jpg" width="100%"/></center>
         </td>
         <td width="70%">
-            <a href="" id="aptamer"><b>聊天机器人</b></a> <br />
-            6
-        </td>
-    </tr>
-</table>
-&nbsp;
-<table width="100%" rules="none">
-    <tr>
-        <td>
-            <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
-        </td>
-        <td width="70%">
-            <a href="" id="aptamer"><b>聊天机器人</b></a> <br />
-            6
-        </td>
-    </tr>
-</table>
-&nbsp;
-<table width="100%" rules="none">
-    <tr>
-        <td>
-            <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
-        </td>
-        <td width="70%">
-            <a href="" id="aptamer"><b>聊天机器人</b></a> <br />
-            6
-        </td>
-    </tr>
-</table>
-&nbsp;
-<table width="100%" rules="none">
-    <tr>
-        <td>
-            <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
-        </td>
-        <td width="70%">
-            <a href="" id="aptamer"><b>聊天机器人</b></a> <br />
-            6
-        </td>
-    </tr>
-</table>
-&nbsp;
-<table width="100%" rules="none">
-    <tr>
-        <td>
-            <center><img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQVIxzbwoOfizLaHhu91OXEsvQ1vbbYEdy8FMGx5gJ5ttxRpavKSA" width="100%"/></center>
-        </td>
-        <td width="70%">
-            <a href="" id="aptamer"><b>聊天机器人</b></a> <br />
-            6
+            <a href="" id="aptamer"><b>to be continue</b></a> <br />
+        
         </td>
     </tr>
 </table>
