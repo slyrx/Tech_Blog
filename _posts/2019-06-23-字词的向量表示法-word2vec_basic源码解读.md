@@ -235,7 +235,7 @@ merge_all 可以将所有summary全部保存到磁盘，以便tensorboard显示�
 feed_dict = {train_inputs: batch_inputs, train_labels: batch_labels}
 ```
 
-RunMetadata 表示定义一个容器来获取元数据。
+RunMetadata 表示定义一个容器来获取元数据。本质是一个容器。
 ```
 run_metadata = tf.RunMetadata()
 ```
@@ -285,4 +285,730 @@ valid_word = reverse_dictionary[valid_examples[i]]
 ```
     nearest = (-sim[i, :]).argsort()[1:top_k + 1]
 ```
-sim 的大小为16个50000长度的字符串，选择1个50000的 sim，`numpy.argsort`函数的含义是数组值从小到大的索引值。因此，该句意为在50000个经过从小到大排列的索引序列中，选择从1到8个位置。这8个位置被认为是与 'many' 最相似的词。下面开始输出这8个词。通过输出的 log 可以看到，
+sim 的大小为16个50000长度的字符串，选择1个50000的 sim，`numpy.argsort`函数的含义是数组值从小到大的索引值。因此，该句意为在50000个经过从小到大排列的索引序列中，选择从1到8个位置。这8个位置被认为是与 'many' 最相似的词。下面开始输出这8个词`log_str = 'Nearest to %s:' % valid_word`。通过输出的 log 可以看到，除了输出了16个示例词的相似词
+```
+        for k in xrange(top_k):
+          close_word = reverse_dictionary[nearest[k]]
+          log_str = '%s %s,' % (log_str, close_word)
+```
+，还针对每2000次循环进行了一次损失函数情况的打印。可以看到，由信噪比表达的损失函数的值在逐渐提高，由初始值的305最终提高到了4.69.
+
+最后，对形状为[5000, 128]的 normalized_embeddings 余弦向量进行计算：
+```
+final_embeddings = normalized_embeddings.eval()
+```
+
+至此，对于模型的计算步骤已经执行完毕。
+接下来，将反向字典中的内容保存为 metadata.tsv 文件到 'examples/tutorials/word2vec/log'路径下。
+```
+  with open(FLAGS.log_dir + '/metadata.tsv', 'w') as f:
+    for i in xrange(vocabulary_size):
+      f.write(reverse_dictionary[i] + '\n')
+```
+将模型保存为 model.ckpt ，供后续的重复调用。
+```
+saver.save(session, os.path.join(FLAGS.log_dir, 'model.ckpt'))
+```
+
+对 TensorBoard 可视化的内容进行设置，首先提取 TensorBoard 对象，
+```
+config = projector.ProjectorConfig()
+```
+
+增加设置项，这里使用 config.embeddings.add 函数为配置增加一个设置项 embedding_conf。
+```
+  embedding_conf = config.embeddings.add()
+```
++ config.embeddings.add()
+为配置增加一个选项
+
+
+设置项的内容为
+```
+  embedding_conf.tensor_name = embeddings.name
+  embedding_conf.metadata_path = os.path.join(FLAGS.log_dir, 'metadata.tsv')
+```
+将可视化设置执行写入。
+```
+projector.visualize_embeddings(writer, config)
+```
+执行完所有的这些步骤，将写入对象执行关闭操作。
+
+### 对嵌入结果进行可视化
+可视化过程需要导入两个用于画图的包：
+```
+  from sklearn.manifold import TSNE
+  import matplotlib.pyplot as plt
+```
+
+其中 TSNE 包是是目前来说效果最好的数据降维与可视化方法。但是它的缺点也很明显，比如：占内存大，运行时间长。当我们想要对高维数据进行分类，又不清楚这个数据集有没有很好的可分性（即同类之间间隔小，异类之间间隔大），可以通过t-SNE投影到2维或者3维的空间中观察一下。如果在低维空间中具有可分性，则数据是可分的；如果在高维空间中不具有可分性，可能是数据不可分，也可能仅仅是因为不能投影到低维空间。 
+
+```
+  tsne = TSNE(
+      perplexity=30, n_components=2, init='pca', n_iter=5000, method='exact')
+```
+
+渲染特征及label标签，选择500个单词描绘它们的关系。
+```
+  plot_only = 500
+  low_dim_embs = tsne.fit_transform(final_embeddings[:plot_only, :])
+  labels = [reverse_dictionary[i] for i in xrange(plot_only)]
+```
+final_embeddings 的形状是50000个维度为128个特征的单词，这里选择500个单词的特征进行渲染。它们的标签值就用索引字典反查表中查出的单词来表示。
+
+执行画图操作
+```
+  plot_with_labels(low_dim_embs, labels, os.path.join(gettempdir(), 'tsne.png'))
+```
+
+到此位置，该篇的源码解读全部完成。
+
+## 总结
+通过通篇的源码解读，现在我们对 word2vec 有了一个基本的了解，在这个例子里，选择加载规模为17005207的 vocabulary 词汇表，对这些数据进行统计，最终形成四种格式化的数据形式供后续备用：
+
+|变量名称|变量内容|
+|---|---|
+|data|[5234, 3081, 12, 6, 195, 2, 3134, 46, 59, 156]|
+|count|[['UNK', 418391], ('the', 1061396), ('of', 593677), ('and', 416629), ('one', 411764)]|
+|dictionary|{'UNK': 0, 'the': 1, 'of': 2, 'and': 3, 'one': 4, 'in': 5, 'a': 6, 'to': 7, 'zero': 8}|
+|reverse_dictionary|['anarchism', 'originated', 'as', 'a', 'term', 'of', 'abuse', 'first', 'used', 'against']|
+
+接下来，构建一个 skip-gram 模型，及该模型需要的数据准备。输入的数据形式为[128],数据label形式为[128,1], 有效的示例窗口形状为[100, 16]. 综合对以上的形式进行汇总，是对128个int单词编码进行训练，目标值是
+另外的128个独立的单词索引。generate_batch 是对训练按照什么样步骤进行训练的一种预设。通常依据的原则是能尽量高效的将CPU的内核利用起来。因此通常单个批次的大小和批次设定的规模都会设置为以CPU能最高效的利用起来为原则。接下来逐批次进行训练，将训练数据交给 session ，再由 session 调用前面定义好的 tf.nn.nce_loss 进行正式的模型训练。将训练后的结果损失函数值进行输出，同时给出距离当前词最近的16个单词，进行展示。
+
+最终的输出，是一个形状为[50000，128]的矩阵，50000行表示从语料库中截取的前50000个语料，列表示每次截取选择一句话中的128个单词，其中的值表示这句话中每个词的向量分布情况。
+当需要 tsne 进行输出时，需要对这些句子的情况进行 tsne 模型的拟合，并输出低纬度信息。
+
+# 疑问？
+```
+ low_dim_embs = tsne.fit_transform(final_embeddings[:plot_only, :])
+```
+选择的前500行的句子得出的低纬度的信息正好能和 reverse_dictionary 反转字典中可以匹配上吗？为什么会是这种顺序呢？
+
+### 补充训练数据中特征值和标签值的生成过程
+generate_batch 的内部逻辑是：batch_size=128, num_skips=2, skip_window=1)
+
+基本的声明，data_index 声明为全局变量；批次规模大小对2取余的结果必须等于0；忽略的词数量必须小于滑窗的两倍。
+```
+  global data_index
+  assert batch_size % num_skips == 0
+  assert num_skips <= 2 * skip_window
+```
+
+初始变量的定义
+```
+  batch = np.ndarray(shape=(batch_size), dtype=np.int32)
+```
+batch 定义大小为128，类型为整型，具体值没有指定。
+
+```
+  labels = np.ndarray(shape=(batch_size, 1), dtype=np.int32)
+```
+labels 定义为 (128, 1), 类型为整型，具体值也没有指定。
+
+```
+span = 2 * skip_window + 1
+```
+间隔定义为滑窗的2倍加1，此处为3.
+
+```
+  buffer = collections.deque(maxlen=span)
+```
+初始化定义一个队列，队列的大小为3，初始化为空
+
+```
+  if data_index + span > len(data):
+    data_index = 0
+```
+指定，如果选择的数据索引加上跨距已经超出了语料的最大长度，那么将选择数据的索引重新初始化为0，这是为了避免越界，如果发生了越界的情况，就对索引进行重置，避免了越界。
+
+```
+buffer.extend(data[data_index:data_index + span])
+```
+在准备传入的 buffer 中追加填入数据，数据内容是字典的当前索引位置加间隔3. 也就是在buffer中追加了训练数据，单次追加的训练形式为`<class 'list'>: [8645, 1, 1517]`。
++ deque.extend
+一次性从右端添加多个元素,如果设置了最大间隔`buffer = collections.deque(maxlen=span)`则有新元素填入后，旧元素会被删除。
+
+
+```
+for i in range(batch_size // num_skips):
+```
+单批次下，按照2为间隔进行检查
+
+```
+context_words = [w for w in range(span) if w != skip_window]
+```
+按照从`the quick brown fox jumped over the lazy dog`中以`([the, brown], quick), ([quick, fox], brown), ([brown, jumped], fox), ...`的形式进行截取，将表示上下文的词组提取放入 context_words 。也就是提取出 `<class 'list'>: [0, 2] [the, brown]`，
+
+```
+words_to_use = random.sample(context_words, num_skips)
+```
++ random.sample(context_words, 2)
+从 context_words 中随机提取出2个元素，这里表示从上下文中随机提取出2个元素。
+
+```
+for j, context_word in enumerate(words_to_use):
+```
+遍历随机抽出的2个元素
+
+```
+batch[i * num_skips + j] = buffer[skip_window]
+```
+将 buffer 中准备做训练的词赋值给 batch
+
+```
+labels[i * num_skips + j, 0] = buffer[context_word]
+```
+将上下文的其中一个词置于预测标签列表中，形成了下面的数据对应格式
+
+|num|batch|labels|
+|---|---|---|
+|0|1|1517|
+|1|1|8645|
+
+```
+      buffer.append(data[data_index])
+      data_index += 1
+```
+在未到达数据结尾时，向 buffer 中追加一个新的单词，此时 buffer 的变化情况如下：
+
+|buffer 变化前|buffer 变化后|
+|---|---|
+|[8645,1,1517]|[1,1517,293]|
+|[1,1517,293]|[1517,293,4412]|
+
+可以看到，在128个长度范围内的句子中，以2个为间隔，进行文字内容的特征输入，及标签值整理过程，向下一组三个单词方向进行处理。
+
+|nums|batch|labels|
+|---|---|---|
+|0|1|1517|
+|1|1|8645|
+|2|1517|293|
+|3|1517|1|
+
+<br>
+<br>
+<br>
+<br>
+
+### 附录：一个批次的训练数据及标签值的展示
+
+<table>
+   <tr>
+      <td>batch</td>
+      <td>labels</td>
+   </tr>
+   <tr>
+      <td>1</td>
+      <td>[[ 1517]</td>
+   </tr>
+   <tr>
+      <td>1</td>
+      <td> [ 8645]</td>
+   </tr>
+   <tr>
+      <td>1517</td>
+      <td> [  293]</td>
+   </tr>
+   <tr>
+      <td>1517</td>
+      <td> [    1]</td>
+   </tr>
+   <tr>
+      <td>293</td>
+      <td> [ 4412]</td>
+   </tr>
+   <tr>
+      <td>293</td>
+      <td> [ 1517]</td>
+   </tr>
+   <tr>
+      <td>4412</td>
+      <td> [  293]</td>
+   </tr>
+   <tr>
+      <td>4412</td>
+      <td> [  558]</td>
+   </tr>
+   <tr>
+      <td>558</td>
+      <td> [    2]</td>
+   </tr>
+   <tr>
+      <td>558</td>
+      <td> [ 4412]</td>
+   </tr>
+   <tr>
+      <td>2</td>
+      <td> [  558]</td>
+   </tr>
+   <tr>
+      <td>2</td>
+      <td> [16825]</td>
+   </tr>
+   <tr>
+      <td>16825</td>
+      <td> [  457]</td>
+   </tr>
+   <tr>
+      <td>16825</td>
+      <td> [    2]</td>
+   </tr>
+   <tr>
+      <td>457</td>
+      <td> [    3]</td>
+   </tr>
+   <tr>
+      <td>457</td>
+      <td> [16825]</td>
+   </tr>
+   <tr>
+      <td>3</td>
+      <td> [ 5809]</td>
+   </tr>
+   <tr>
+      <td>3</td>
+      <td> [  457]</td>
+   </tr>
+   <tr>
+      <td>5809</td>
+      <td> [    3]</td>
+   </tr>
+   <tr>
+      <td>5809</td>
+      <td> [  558]</td>
+   </tr>
+   <tr>
+      <td>558</td>
+      <td> [ 5809]</td>
+   </tr>
+   <tr>
+      <td>558</td>
+      <td> [    2]</td>
+   </tr>
+   <tr>
+      <td>2</td>
+      <td> [ 1151]</td>
+   </tr>
+   <tr>
+      <td>2</td>
+      <td> [  558]</td>
+   </tr>
+   <tr>
+      <td>1151</td>
+      <td> [    2]</td>
+   </tr>
+   <tr>
+      <td>1151</td>
+      <td> [20854]</td>
+   </tr>
+   <tr>
+      <td>20854</td>
+      <td> [ 1151]</td>
+   </tr>
+   <tr>
+      <td>20854</td>
+      <td> [   25]</td>
+   </tr>
+   <tr>
+      <td>25</td>
+      <td> [20854]</td>
+   </tr>
+   <tr>
+      <td>25</td>
+      <td> [16827]</td>
+   </tr>
+   <tr>
+      <td>16827</td>
+      <td> [   25]</td>
+   </tr>
+   <tr>
+      <td>16827</td>
+      <td> [ 3213]</td>
+   </tr>
+   <tr>
+      <td>3213</td>
+      <td> [16827]</td>
+   </tr>
+   <tr>
+      <td>3213</td>
+      <td> [   47]</td>
+   </tr>
+   <tr>
+      <td>47</td>
+      <td> [ 3213]</td>
+   </tr>
+   <tr>
+      <td>47</td>
+      <td> [  199]</td>
+   </tr>
+   <tr>
+      <td>199</td>
+      <td> [   20]</td>
+   </tr>
+   <tr>
+      <td>199</td>
+      <td> [   47]</td>
+   </tr>
+   <tr>
+      <td>20</td>
+      <td> [  199]</td>
+   </tr>
+   <tr>
+      <td>20</td>
+      <td> [   58]</td>
+   </tr>
+   <tr>
+      <td>58</td>
+      <td> [   20]</td>
+   </tr>
+   <tr>
+      <td>58</td>
+      <td> [ 3213]</td>
+   </tr>
+   <tr>
+      <td>3213</td>
+      <td> [    5]</td>
+   </tr>
+   <tr>
+      <td>3213</td>
+      <td> [   58]</td>
+   </tr>
+   <tr>
+      <td>5</td>
+      <td> [ 3213]</td>
+   </tr>
+   <tr>
+      <td>5</td>
+      <td> [ 2924]</td>
+   </tr>
+   <tr>
+      <td>2924</td>
+      <td> [    3]</td>
+   </tr>
+   <tr>
+      <td>2924</td>
+      <td> [    5]</td>
+   </tr>
+   <tr>
+      <td>3</td>
+      <td> [    0]</td>
+   </tr>
+   <tr>
+      <td>3</td>
+      <td> [ 2924]</td>
+   </tr>
+   <tr>
+      <td>0</td>
+      <td> [    3]</td>
+   </tr>
+   <tr>
+      <td>0</td>
+      <td> [  435]</td>
+   </tr>
+   <tr>
+      <td>435</td>
+      <td> [    0]</td>
+   </tr>
+   <tr>
+      <td>435</td>
+      <td> [ 5191]</td>
+   </tr>
+   <tr>
+      <td>5191</td>
+      <td> [  435]</td>
+   </tr>
+   <tr>
+      <td>5191</td>
+      <td> [    7]</td>
+   </tr>
+   <tr>
+      <td>7</td>
+      <td> [ 4558]</td>
+   </tr>
+   <tr>
+      <td>7</td>
+      <td> [ 5191]</td>
+   </tr>
+   <tr>
+      <td>4558</td>
+      <td> [   58]</td>
+   </tr>
+   <tr>
+      <td>4558</td>
+      <td> [    7]</td>
+   </tr>
+   <tr>
+      <td>58</td>
+      <td> [ 3213]</td>
+   </tr>
+   <tr>
+      <td>58</td>
+      <td> [ 4558]</td>
+   </tr>
+   <tr>
+      <td>3213</td>
+      <td> [    5]</td>
+   </tr>
+   <tr>
+      <td>3213</td>
+      <td> [   58]</td>
+   </tr>
+   <tr>
+      <td>5</td>
+      <td> [ 3213]</td>
+   </tr>
+   <tr>
+      <td>5</td>
+      <td> [  158]</td>
+   </tr>
+   <tr>
+      <td>158</td>
+      <td> [15948]</td>
+   </tr>
+   <tr>
+      <td>158</td>
+      <td> [    5]</td>
+   </tr>
+   <tr>
+      <td>15948</td>
+      <td> [  112]</td>
+   </tr>
+   <tr>
+      <td>15948</td>
+      <td> [  158]</td>
+   </tr>
+   <tr>
+      <td>112</td>
+      <td> [15948]</td>
+   </tr>
+   <tr>
+      <td>112</td>
+      <td> [  150]</td>
+   </tr>
+   <tr>
+      <td>150</td>
+      <td> [ 9772]</td>
+   </tr>
+   <tr>
+      <td>150</td>
+      <td> [  112]</td>
+   </tr>
+   <tr>
+      <td>9772</td>
+      <td> [   40]</td>
+   </tr>
+   <tr>
+      <td>9772</td>
+      <td> [  150]</td>
+   </tr>
+   <tr>
+      <td>40</td>
+      <td> [ 3420]</td>
+   </tr>
+   <tr>
+      <td>40</td>
+      <td> [ 9772]</td>
+   </tr>
+   <tr>
+      <td>3420</td>
+      <td> [   40]</td>
+   </tr>
+   <tr>
+      <td>3420</td>
+      <td> [   29]</td>
+   </tr>
+   <tr>
+      <td>29</td>
+      <td> [  828]</td>
+   </tr>
+   <tr>
+      <td>29</td>
+      <td> [ 3420]</td>
+   </tr>
+   <tr>
+      <td>828</td>
+      <td> [   29]</td>
+   </tr>
+   <tr>
+      <td>828</td>
+      <td> [ 4412]</td>
+   </tr>
+   <tr>
+      <td>4412</td>
+      <td> [  828]</td>
+   </tr>
+   <tr>
+      <td>4412</td>
+      <td> [ 3035]</td>
+   </tr>
+   <tr>
+      <td>3035</td>
+      <td> [ 4412]</td>
+   </tr>
+   <tr>
+      <td>3035</td>
+      <td> [ 3035]</td>
+   </tr>
+   <tr>
+      <td>3035</td>
+      <td> [    0]</td>
+   </tr>
+   <tr>
+      <td>3035</td>
+      <td> [ 3035]</td>
+   </tr>
+   <tr>
+      <td>0</td>
+      <td> [   53]</td>
+   </tr>
+   <tr>
+      <td>0</td>
+      <td> [ 3035]</td>
+   </tr>
+   <tr>
+      <td>53</td>
+      <td> [   32]</td>
+   </tr>
+   <tr>
+      <td>53</td>
+      <td> [    0]</td>
+   </tr>
+   <tr>
+      <td>32</td>
+      <td> [   53]</td>
+   </tr>
+   <tr>
+      <td>32</td>
+      <td> [   12]</td>
+   </tr>
+   <tr>
+      <td>12</td>
+      <td> [  158]</td>
+   </tr>
+   <tr>
+      <td>12</td>
+      <td> [   32]</td>
+   </tr>
+   <tr>
+      <td>158</td>
+      <td> [   12]</td>
+   </tr>
+   <tr>
+      <td>158</td>
+      <td> [   12]</td>
+   </tr>
+   <tr>
+      <td>12</td>
+      <td> [  158]</td>
+   </tr>
+   <tr>
+      <td>12</td>
+      <td> [    9]</td>
+   </tr>
+   <tr>
+      <td>9</td>
+      <td> [    8]</td>
+   </tr>
+   <tr>
+      <td>9</td>
+      <td> [   12]</td>
+   </tr>
+   <tr>
+      <td>8</td>
+      <td> [    9]</td>
+   </tr>
+   <tr>
+      <td>8</td>
+      <td> [   33]</td>
+   </tr>
+   <tr>
+      <td>33</td>
+      <td> [   11]</td>
+   </tr>
+   <tr>
+      <td>33</td>
+      <td> [    8]</td>
+   </tr>
+   <tr>
+      <td>11</td>
+      <td> [   33]</td>
+   </tr>
+   <tr>
+      <td>11</td>
+      <td> [   14]</td>
+   </tr>
+   <tr>
+      <td>14</td>
+      <td> [   11]</td>
+   </tr>
+   <tr>
+      <td>14</td>
+      <td> [    1]</td>
+   </tr>
+   <tr>
+      <td>1</td>
+      <td> [   14]</td>
+   </tr>
+   <tr>
+      <td>1</td>
+      <td> [ 2968]</td>
+   </tr>
+   <tr>
+      <td>2968</td>
+      <td> [    1]</td>
+   </tr>
+   <tr>
+      <td>2968</td>
+      <td> [  136]</td>
+   </tr>
+   <tr>
+      <td>136</td>
+      <td> [ 2968]</td>
+   </tr>
+   <tr>
+      <td>136</td>
+      <td> [   77]</td>
+   </tr>
+   <tr>
+      <td>77</td>
+      <td> [ 3666]</td>
+   </tr>
+   <tr>
+      <td>77</td>
+      <td> [  136]</td>
+   </tr>
+   <tr>
+      <td>3666</td>
+      <td> [   77]</td>
+   </tr>
+   <tr>
+      <td>3666</td>
+      <td> [ 1462]</td>
+   </tr>
+   <tr>
+      <td>1462</td>
+      <td> [ 3035]</td>
+   </tr>
+   <tr>
+      <td>1462</td>
+      <td> [ 3666]</td>
+   </tr>
+   <tr>
+      <td>3035</td>
+      <td> [ 1462]</td>
+   </tr>
+   <tr>
+      <td>3035</td>
+      <td> [   80]</td>
+   </tr>
+   <tr>
+      <td>80</td>
+      <td> [    6]</td>
+   </tr>
+   <tr>
+      <td>80</td>
+      <td> [ 3035]]</td>
+   </tr>
+</table>
+ 
