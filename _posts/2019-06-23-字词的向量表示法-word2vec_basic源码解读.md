@@ -495,8 +495,8 @@ labels[i * num_skips + j, 0] = buffer[context_word]
 
 <table>
    <tr>
-      <td>batch</td>
-      <td>labels</td>
+      <td>batch (128,)</td>
+      <td>labels(128,1)</td>
    </tr>
    <tr>
       <td>1</td>
