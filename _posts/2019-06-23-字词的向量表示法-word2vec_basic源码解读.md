@@ -491,6 +491,9 @@ labels[i * num_skips + j, 0] = buffer[context_word]
 <br>
 <br>
 
+### word2vec 基本逻辑示意图
+![](https://github.com/slyrx/study_notes_private/blob/master/img/word2vec_basic_logic.png)
+
 ### 附录：一个批次的训练数据及标签值的展示
 
 <table>
