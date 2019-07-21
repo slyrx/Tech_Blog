@@ -96,6 +96,9 @@ valid_size = 16  # Random set of words to evaluate similarity on.
 valid_window = 100  # Only pick dev samples in the head of the distribution.
 valid_examples = np.random.choice(valid_window, valid_size, replace=False)
 ```
++ np.random.choice(valid_window, valid_size, replace=False)
+从 valid_window 的范围中(此处为100)，选择随机选择16个数字。replacement 代表的意思是抽样之后还放不放回去，如果是 False 的话，那么出来的三个数都不一样，如果是 True 的话， 有可能会出现重复的，因为前面的抽的放回去了。
+
 
 下面来正式开启对 skip-gram 模型的构建：第一步，定义图对象`graph = tf.Graph()`,本篇代码是基于 tensorflow r1.14 实现的，因此，语法规则还是按照 tf 1.0 的规则。模型的后续构建需要在该 graph 的上下文中进行
 
