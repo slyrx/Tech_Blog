@@ -72,7 +72,20 @@ curl 'localhost:9200/get-together/group/_search?pretty' -d '{
 同样是搜索的情况下，直接的 ID 检索也比普通的搜索更快。类比数组取值和 map 取值，map 最终还是有一个查询过程，而数组则是 O(1) 的时间复杂度。
 
 ## 集群管理
+### 配置 ElasticSearch
++ 指定集群的名称
+/usr/local/etc/elasticsearch/elasticsearch.yml
+```
+cluster.name: elasticsearch_slyrx
+```
++ 指定详细日志记录
+类似于 Debug 时输出的各种级别的 log 信息。
++ 调整JVM位置
+ElasticSearch 在一个 JVM 中运行。JVM 类似于物理机器，拥有自己的内存，有自己的配置，核心重点是它有多少内存可以使用。选择正确的内存设置对 ElasticSearch 的性能和稳定性有重要的影响。
 
+以上的内容，已经可以称之为“弹性”扩展了。
+### 在集群中加入节点
+经过研究，发现在一个单机上运行双实例的方式逻辑复杂，且因为 ElasticSearch 升级为 7.0 版本，许多配置不同了，因此，觉得尝试docker 的思路。
 
 
 
