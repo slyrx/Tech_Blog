@@ -26,3 +26,50 @@ when uploading some change, you should wait for a little while, in order to let 
 
 
 ## Tensorflow 翻译进度
+
+|名称|完成情况|
+|---|---|
+|[Guide]||
+|[**Components**]||
+|  [ExampleGen]||
+|  [StatisticsGen]||
+|  [SchemaGen]||
+|  [ExampleValidator]||
+|  [Transform]||
+|  [Trainer]||
+|  [Evaluator]||
+|  [ModelValidator]||
+|  [Pusher]||
+|  [Advanced: Custom Components]||
+|[**Orchestrators** 协调器]||
+|  [Apache Airflow]||
+|  [Apache Beam]||
+|  [Kubeflow Pipelines]||
+|[**Libraries**]||
+|  [**Data validation**]||
+|  [check and analyze data]||
+|  [install]||
+|  [get started]||
+|[**Transform**]||
+|  [Preprocess and transform data]||
+|  [install]||
+|  [get started]||
+|[**Modeling for TFX**]||
+|  [Design modeling code]||
+|[**Model Analysis**]||
+|  [install]||
+|  [get started]||
+|  [architecture]||
+|  [improving Model Quality]||
+|[**Serving**]||
+|[Advanced model server Configuration](https://www.tensorflow.org/tfx/serving/custom_servable)||
+|[Building Standard TensorFlow ModelServer](https://www.tensorflow.org/tfx/serving/serving_advanced)||
+|[Use TensorFlow Serving with Kubernetes](https://www.tensorflow.org/tfx/serving/serving_kubernetes)||
+|[Creating a new kind of servable](https://www.tensorflow.org/tfx/serving/custom_servable)||
+|[Creating a module that discovers new servable paths](https://www.tensorflow.org/tfx/serving/custom_source)||
+|[Serving TensorFlow models with custom ops](https://www.tensorflow.org/tfx/serving/custom_ops)||
+|[SignatureDefs in SavedModel for TensorFlow Serving](https://www.tensorflow.org/tfx/serving/signature_defs)||
+|[**Related Projects**]||
+|[Apache Beam]||
+|[ML Metadata]||
+|[TensorBoard]||
