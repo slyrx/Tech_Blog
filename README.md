@@ -63,7 +63,7 @@ when uploading some change, you should wait for a little while, in order to let 
 |  [improving Model Quality]||
 |[**Serving**]||
 |[Advanced model server Configuration](https://www.tensorflow.org/tfx/serving/custom_servable)||
-|[Building Standard TensorFlow ModelServer](https://www.tensorflow.org/tfx/serving/serving_advanced)||
+|[Building Standard TensorFlow ModelServer](https://www.tensorflow.org/tfx/serving/serving_advanced)|✅|
 |[Use TensorFlow Serving with Kubernetes](https://www.tensorflow.org/tfx/serving/serving_kubernetes)||
 |[Creating a new kind of servable](https://www.tensorflow.org/tfx/serving/custom_servable)||
 |[Creating a module that discovers new servable paths](https://www.tensorflow.org/tfx/serving/custom_source)||
