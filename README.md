@@ -118,12 +118,12 @@ when uploading some change, you should wait for a little while, in order to let 
 ||Serving|
 |||
 ||Serving models|
-||TensorFlow Serving with Docker|
+|✅|TensorFlow Serving with Docker|
 ||Installation|
-||Serve a TensorFlow model|
-||Architecture|
-||Advanced model server configuration|
-||Build a TensorFlow ModelServer|
+|✅|Serve a TensorFlow model|
+|✅|Architecture|
+|✅|Advanced model server configuration|
+|✅|Build a TensorFlow ModelServer|
 ||Use TensorFlow Serving with Kubernetes|
 ||Create a new kind of servable|
 ||Create a module that discovers new servable paths|
