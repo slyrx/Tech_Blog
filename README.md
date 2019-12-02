@@ -73,3 +73,63 @@ when uploading some change, you should wait for a little while, in order to let 
 |[Apache Beam]||
 |[ML Metadata]||
 |[TensorBoard]||
+
+####################################################
+
+|完成状态|名称|
+|---|---|
+||Guide|
+||Components|
+||ExampleGen|
+||StatisticsGen|
+||SchemaGen|
+||ExampleValidator|
+||Transform|
+||Trainer|
+||Evaluator|
+||ModelValidator|
+||Pusher|
+||Advanced: Custom Components|
+||Orchestrators|
+||Apache Airflow|
+||Apache Beam|
+||Kubeflow Pipelines|
+||Libraries|
+||Data Validation|
+|||
+||Check and analyze data|
+||Install|
+||Get started|
+||Transform|
+|||
+||Preprocess and transform data|
+||Install|
+||Get started|
+||Modeling for TFX|
+|||
+||Design modeling code|
+||Model Analysis|
+|||
+||Install|
+||Get started|
+||Architecture|
+||Improving Model Quality|
+||Using Fairness Indicators|
+||Serving|
+|||
+||Serving models|
+||TensorFlow Serving with Docker|
+||Installation|
+||Serve a TensorFlow model|
+||Architecture|
+||Advanced model server configuration|
+||Build a TensorFlow ModelServer|
+||Use TensorFlow Serving with Kubernetes|
+||Create a new kind of servable|
+||Create a module that discovers new servable paths|
+||Serving TensorFlow models with custom ops|
+||SignatureDefs in SavedModel for TensorFlow Serving|
+||Related projects|
+||Apache Beam|
+||ML Metadata|
+||TensorBoard|
