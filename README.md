@@ -124,7 +124,7 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|Architecture|
 |✅|Advanced model server configuration|
 |✅|Build a TensorFlow ModelServer|
-||Use TensorFlow Serving with Kubernetes|
+|✅|Use TensorFlow Serving with Kubernetes|
 ||Create a new kind of servable|
 ||Create a module that discovers new servable paths|
 ||Serving TensorFlow models with custom ops|
