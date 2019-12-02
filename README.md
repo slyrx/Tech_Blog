@@ -126,10 +126,10 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|Build a TensorFlow ModelServer|
 |✅|Use TensorFlow Serving with Kubernetes|
 |✅|Create a new kind of servable|
-||Create a module that discovers new servable paths|
-||Serving TensorFlow models with custom ops|
-||SignatureDefs in SavedModel for TensorFlow Serving|
-||Related projects|
+|✅|Create a module that discovers new servable paths|
+|✅|Serving TensorFlow models with custom ops|
+|✅|SignatureDefs in SavedModel for TensorFlow Serving|
+||**Related projects**|
 ||Apache Beam|
 ||ML Metadata|
 ||TensorBoard|
