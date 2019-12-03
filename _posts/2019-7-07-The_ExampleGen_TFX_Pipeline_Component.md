@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "The ExampleGen TFX Pipeline Component"
-date:   2019-07-06 10:11:30
+date:   2019-07-07 10:11:30
 tags: [tensorflow]
 ---
 
