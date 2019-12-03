@@ -94,7 +94,7 @@ when uploading some change, you should wait for a little while, in order to let 
 ||Apache Airflow|
 ||Apache Beam|
 ||Kubeflow Pipelines|
-||Libraries|
+|🌹|Libraries|
 |🌹|**Data Validation**|
 |||
 ||Check and analyze data|
