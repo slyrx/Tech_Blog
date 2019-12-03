@@ -79,7 +79,7 @@ when uploading some change, you should wait for a little while, in order to let 
 |完成状态|名称|
 |---|---|
 ||Guide|
-||Components|
+|🌹|**Components**|
 ||ExampleGen|
 ||StatisticsGen|
 ||SchemaGen|
@@ -90,32 +90,32 @@ when uploading some change, you should wait for a little while, in order to let 
 ||ModelValidator|
 ||Pusher|
 ||Advanced: Custom Components|
-||Orchestrators|
+|🌹|**Orchestrators**|
 ||Apache Airflow|
 ||Apache Beam|
 ||Kubeflow Pipelines|
-||Libraries|
-||Data Validation|
+|🌹|Libraries|
+|🌹|**Data Validation**|
 |||
 ||Check and analyze data|
 ||Install|
 ||Get started|
-||Transform|
+|🌹|**Transform**|
 |||
 ||Preprocess and transform data|
 ||Install|
 ||Get started|
-||Modeling for TFX|
+|🌹|**Modeling for TFX**|
 |||
 ||Design modeling code|
-||Model Analysis|
+|🌹|**Model Analysis**|
 |||
 ||Install|
 ||Get started|
 ||Architecture|
 ||Improving Model Quality|
 ||Using Fairness Indicators|
-||Serving|
+|🌹|**Serving**|
 |||
 ||Serving models|
 |✅|TensorFlow Serving with Docker|
@@ -126,10 +126,10 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|Build a TensorFlow ModelServer|
 |✅|Use TensorFlow Serving with Kubernetes|
 |✅|Create a new kind of servable|
-||Create a module that discovers new servable paths|
-||Serving TensorFlow models with custom ops|
-||SignatureDefs in SavedModel for TensorFlow Serving|
-||Related projects|
+|✅|Create a module that discovers new servable paths|
+|✅|Serving TensorFlow models with custom ops|
+|✅|SignatureDefs in SavedModel for TensorFlow Serving|
+|🌹|**Related projects**|
 ||Apache Beam|
 ||ML Metadata|
 ||TensorBoard|
