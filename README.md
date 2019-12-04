@@ -82,8 +82,8 @@ when uploading some change, you should wait for a little while, in order to let 
 |🌹|**Components**|
 |✅|ExampleGen|
 |✅|StatisticsGen|
-||SchemaGen|
-||ExampleValidator|
+|✅|SchemaGen|
+|✅|ExampleValidator|
 ||Transform|
 ||Trainer|
 ||Evaluator|
