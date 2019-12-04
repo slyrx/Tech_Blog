@@ -10,7 +10,7 @@ tags: [tensorflow]
         本文档详细介绍了 StatisticsGen 组件的作用。
 
 ## 目录
-+ StatisticsGen 和 TensorFlow 
++ StatisticsGen 和 TensorFlow 数据验证
 + 使用 StatisticsGen 组件
 
 StatisticsGen TFX管道组件会生成有关训练和服务数据的功能统计信息，其他管道组件可以使用这些统计信息。 StatisticsGen使用Beam缩放到大型数据集。
