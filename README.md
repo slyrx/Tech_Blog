@@ -80,8 +80,8 @@ when uploading some change, you should wait for a little while, in order to let 
 |---|---|
 ||Guide|
 |🌹|**Components**|
-||ExampleGen|
-||StatisticsGen|
+|✅|ExampleGen|
+|✅|StatisticsGen|
 ||SchemaGen|
 ||ExampleValidator|
 ||Transform|
