@@ -86,9 +86,9 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|ExampleValidator|
 |✅|Transform|
 |✅|Trainer|
-||Evaluator|
-||ModelValidator|
-||Pusher|
+|✅|Evaluator|
+|✅|ModelValidator|
+|✅|Pusher|
 ||Advanced: Custom Components|
 |🌹|**Orchestrators**|
 ||Apache Airflow|
