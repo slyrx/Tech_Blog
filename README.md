@@ -91,9 +91,9 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|Pusher|
 |✅|Advanced: Custom Components|
 |🌹|**Orchestrators**|
-||Apache Airflow|
-||Apache Beam|
-||Kubeflow Pipelines|
+|✅|Apache Airflow|
+|✅|Apache Beam|
+|✅|Kubeflow Pipelines|
 |🌹|Libraries|
 |🌹|**Data Validation**|
 |||
