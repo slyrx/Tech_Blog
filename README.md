@@ -84,8 +84,8 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|StatisticsGen|
 |✅|SchemaGen|
 |✅|ExampleValidator|
-||Transform|
-||Trainer|
+|✅|Transform|
+|✅|Trainer|
 ||Evaluator|
 ||ModelValidator|
 ||Pusher|
