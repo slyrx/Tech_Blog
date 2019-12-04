@@ -6,7 +6,7 @@ tags: [tensorflow]
 ---
 
     导语：
-        本文是 tensorflow 手册翻译系列的第十六篇。
+        本文是 tensorflow 手册翻译系列的第十七篇。
         本文档详细介绍了 Evaluator 组件的作用。
 
 ## 目录
