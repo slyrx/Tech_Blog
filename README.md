@@ -97,29 +97,29 @@ when uploading some change, you should wait for a little while, in order to let 
 |🌹|Libraries|
 |🌹|**Data Validation**|
 |||
-||Check and analyze data|
-||Install|
-||Get started|
+|✅|Check and analyze data|
+|✅|Install|
+|✅|Get started|
 |🌹|**Transform**|
 |||
-||Preprocess and transform data|
-||Install|
-||Get started|
+|✅|Preprocess and transform data|
+|✅|Install|
+|✅|Get started|
 |🌹|**Modeling for TFX**|
 |||
-||Design modeling code|
+|✅|Design modeling code|
 |🌹|**Model Analysis**|
 |||
-||Install|
-||Get started|
-||Architecture|
-||Improving Model Quality|
-||Using Fairness Indicators|
+|✅|Install|
+|✅|Get started|
+|✅|Architecture|
+|✅|Improving Model Quality|
+|✅|Using Fairness Indicators|
 |🌹|**Serving**|
 |||
 ||Serving models|
 |✅|TensorFlow Serving with Docker|
-||Installation|
+|✅|Installation|
 |✅|Serve a TensorFlow model|
 |✅|Architecture|
 |✅|Advanced model server configuration|
@@ -130,6 +130,6 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|Serving TensorFlow models with custom ops|
 |✅|SignatureDefs in SavedModel for TensorFlow Serving|
 |🌹|**Related projects**|
-||Apache Beam|
-||ML Metadata|
-||TensorBoard|
+|✅|Apache Beam|
+|✅|ML Metadata|
+|✅|TensorBoard|
