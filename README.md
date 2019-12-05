@@ -130,6 +130,6 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|Serving TensorFlow models with custom ops|
 |✅|SignatureDefs in SavedModel for TensorFlow Serving|
 |🌹|**Related projects**|
-||Apache Beam|
+|✅|Apache Beam|
 ||ML Metadata|
 ||TensorBoard|
