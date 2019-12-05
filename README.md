@@ -119,7 +119,7 @@ when uploading some change, you should wait for a little while, in order to let 
 |||
 ||Serving models|
 |✅|TensorFlow Serving with Docker|
-||Installation|
+|✅|Installation|
 |✅|Serve a TensorFlow model|
 |✅|Architecture|
 |✅|Advanced model server configuration|
@@ -131,5 +131,5 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|SignatureDefs in SavedModel for TensorFlow Serving|
 |🌹|**Related projects**|
 |✅|Apache Beam|
-||ML Metadata|
-||TensorBoard|
+|✅|ML Metadata|
+|✅|TensorBoard|
