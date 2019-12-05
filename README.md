@@ -97,24 +97,24 @@ when uploading some change, you should wait for a little while, in order to let 
 |🌹|Libraries|
 |🌹|**Data Validation**|
 |||
-||Check and analyze data|
-||Install|
-||Get started|
+|✅|Check and analyze data|
+|✅|Install|
+|✅|Get started|
 |🌹|**Transform**|
 |||
-||Preprocess and transform data|
-||Install|
-||Get started|
+|✅|Preprocess and transform data|
+|✅|Install|
+|✅|Get started|
 |🌹|**Modeling for TFX**|
 |||
-||Design modeling code|
+|✅|Design modeling code|
 |🌹|**Model Analysis**|
 |||
-||Install|
-||Get started|
-||Architecture|
-||Improving Model Quality|
-||Using Fairness Indicators|
+|✅|Install|
+|✅|Get started|
+|✅|Architecture|
+|✅|Improving Model Quality|
+|✅|Using Fairness Indicators|
 |🌹|**Serving**|
 |||
 ||Serving models|
