@@ -117,7 +117,7 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|Using Fairness Indicators|
 |🌹|**Serving**|
 |||
-||Serving models|
+|✅|Serving models|
 |✅|TensorFlow Serving with Docker|
 |✅|Installation|
 |✅|Serve a TensorFlow model|
