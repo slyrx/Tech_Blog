@@ -133,3 +133,6 @@ when uploading some change, you should wait for a little while, in order to let 
 |✅|Apache Beam|
 |✅|ML Metadata|
 |✅|TensorBoard|
+
+## 芝加哥示例
+https://www.tensorflow.org/tfx/tutorials/tfx/airflow_workshop
