@@ -24,6 +24,13 @@ when uploading some change, you should wait for a little while, in order to let 
 3. bundle exe jekyll build
 4. bundle exec jekyll serve -H 0.0.0.0 -P 4000 -I
 
+# Range
++ MySQL
++ K8s https://minikube.sigs.k8s.io/docs/start/
++ ClickHouse
++ OLAP
++ TF
++ Kafka
 
 ## Tensorflow 翻译进度
 
