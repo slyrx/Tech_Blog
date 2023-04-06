@@ -10,7 +10,7 @@ title: News
 ---
 
 ## What's News
-+ May. 2020 - 获得 TensorFlow 开发者认证证书
++ May. 2020 - 获得 [TensorFlow 开发者认证证书](https://developers.google.com/certification/directory/tensorflow?hl=zh-cn)
 + Jun. 2019 - 加入 TensorFlow 社区翻译组
 + Jun. 2019 - 成为 [TFUG 北京](https://mp.weixin.qq.com/s/PJFNPxx6RteC2PX85pF5GA) 社区组织者
 + Jun. 2019 - 获得 AI From the Data Center to the Edge -An Optimized Path Using Intel® Architecture 证书
