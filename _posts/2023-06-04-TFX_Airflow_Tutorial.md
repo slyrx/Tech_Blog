@@ -60,7 +60,7 @@ tags: [tensorflow]
 
 ![dag-button-refresh](https://www.tensorflow.org/static/tfx/tutorials/tfx/images/airflow_workshop/dag-button-refresh.png)
 
-### 3. 打开一个新的终端窗口，在该窗口中执行下面的命令，打开对每个组件进行性能分析的 notebook
+### 3. 流水线执行完成后，打开一个新的终端窗口，在该窗口中执行下面的命令，打开对每个组件进行性能分析的 notebook
 ```bash
     # Open yet another new terminal window, and in that window ...
     # Assuming that you've cloned the TFX repo into ~/tfx
