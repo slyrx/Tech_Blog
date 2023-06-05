@@ -51,7 +51,7 @@ tags: [tensorflow]
 打开浏览器，然后转到 http://127.0.0.1:8080
 
 ##### DAG 操作
-登陆管理平台
+登陆管理平台，用户名：admin, 密码：admin
 ![login page](https://www.tensorflow.org/static/tfx/tutorials/tfx/images/airflow_workshop/airflow-login.png)
 运行 taxi 流水线
 ![DAG](https://www.tensorflow.org/static/tfx/tutorials/tfx/images/airflow_workshop/dag-home-full.png)
