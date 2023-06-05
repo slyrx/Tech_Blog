@@ -9,7 +9,7 @@ tags: [tensorflow]
 
 ## 环境要求
 + Linux/MacOS
-+ Python 3.5 及更高版本
++ Python 3.9 及更高版本
 + Virtualenv
 + Git
 
