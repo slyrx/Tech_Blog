@@ -62,6 +62,11 @@
       <button onclick="processWords()">生成网页</button>
     </div>
 
+    <!-- Display the hyperlink button -->
+    <div class="input-container">
+      <button onclick="openExternalLink()">查看小学生词汇表</button>
+    </div>
+
     <!-- Content Section -->
     <div id="contentContainer"></div>
 
@@ -146,6 +151,13 @@
         } else {
           backToTopButton.style.display = "none";
         }
+      }
+
+      function openExternalLink() {
+        window.open(
+          "https://slyrx.github.io/Tech_Blog/xiaoxuecihuibiao.html",
+          "_blank"
+        );
       }
 
       window.addEventListener("scroll", toggleBackToTop);
