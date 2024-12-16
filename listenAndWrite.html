@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dynamic HTML Generator</title>
+    <title>听写帮手</title>
     <style>
       body {
         display: flex;
@@ -46,10 +46,20 @@
       #backToTop:hover {
         background-color: #0056b3;
       }
+      footer {
+        margin-top: 20px;
+        text-align: center;
+        font-size: 14px;
+        color: #555;
+      }
+      footer a {
+        color: #007bff;
+        text-decoration: none;
+      }
     </style>
   </head>
   <body>
-    <h1>Dynamic HTML Generator</h1>
+    <h1>听写帮手</h1>
 
     <!-- Input Container -->
     <div class="input-container">
@@ -72,6 +82,20 @@
 
     <!-- Back to Top Button -->
     <button id="backToTop" onclick="scrollToTop()">回到顶部</button>
+
+    <!-- Footer with copyright and patent info -->
+    <footer>
+      <p>&copy; 2024 Study Brighter. All rights reserved.</p>
+      <p>
+        此工具受
+        <a href="https://www.cnipa.gov.cn/">专利保护</a
+        >，未经授权禁止复制和分发。
+      </p>
+      <p>
+        版权声明: 本网站内容为 Study Brighter
+        的所有权，未经许可不得复制、修改或商业用途。
+      </p>
+    </footer>
 
     <script>
       // 字符串数组
