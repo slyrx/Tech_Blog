@@ -56,9 +56,32 @@
         color: #007bff;
         text-decoration: none;
       }
+      /* 隐藏统计信息 */
+      #statistics {
+        display: none;
+      }
     </style>
+    <!-- Google Tag Manager -->
+    <script>
+      (function(w,d,s,l,i){
+        w[l]=w[l]||[];
+        w[l].push({'gtm.start':
+        new Date().getTime(),event:'gtm.js'});
+        var f=d.getElementsByTagName(s)[0],
+        j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+        'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+      })(window,document,'script','dataLayer','GTM-KGX2HZ7Z');
+    </script>
+    <!-- End Google Tag Manager -->
   </head>
   <body>
+    <!-- Google Tag Manager (noscript) -->
+    <noscript>
+      <iframe src="https://www.googletagmanager.com/ns.html?id=GTM-KGX2HZ7Z"
+      height="0" width="0" style="display:none;visibility:hidden"></iframe>
+    </noscript>
+    <!-- End Google Tag Manager (noscript) -->
+
     <h1>听写帮手</h1>
 
     <!-- Input Container -->
@@ -97,9 +120,19 @@
       </p>
     </footer>
 
+    <!-- Hidden Statistics Section -->
+    <div id="statistics"></div>
+
     <script>
       // 字符串数组
       const words = [];
+
+      // 统计信息对象
+      const stats = {
+        wordCount: 0,
+        charCount: 0,
+        wordList: [],
+      };
 
       function addWords() {
         const wordInput = document.getElementById("wordInput");
@@ -109,6 +142,9 @@
           // 根据逗号（中英）或空格分割输入的词语
           const newWords = input.split(/[,、\s]+/).filter((word) => word);
           words.push(...newWords);
+          stats.wordCount += newWords.length;
+          stats.charCount += newWords.join("").length; // 统计字符总数
+          stats.wordList.push(...newWords); // 更新词列表
           alert(`词已添加！当前词列表: ${words.join(", ")}`);
           wordInput.value = "";
         } else {
@@ -157,6 +193,9 @@
         // 清空词列表
         words.length = 0;
 
+        // 更新隐藏统计信息
+        updateStatistics();
+
         // 回到网页顶部
         window.scrollTo({ top: 0, behavior: "smooth" });
 
@@ -182,6 +221,17 @@
           "https://slyrx.github.io/Tech_Blog/xiaoxuecihuibiao.html",
           "_blank"
         );
+      }
+
+      function updateStatistics() {
+        const statsDiv = document.getElementById("statistics");
+
+        // 将统计信息写入隐藏的 div
+        statsDiv.innerHTML = `
+          <p>总词数: ${stats.wordCount}</p>
+          <p>总字符数: ${stats.charCount}</p>
+          <p>词列表: ${stats.wordList.join(", ")}</p>
+        `;
       }
 
       window.addEventListener("scroll", toggleBackToTop);
